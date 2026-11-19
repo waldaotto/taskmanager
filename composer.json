@@ -1,5 +1,10 @@
 {
+    "name": "proejct/taskmanager",
+    "description": "Minha aplicação PHP",
     "autoload": {
-        "psr-4": {"Acme\\": "src/"}
-    }
+        "psr-4": {
+            "App\\": "App/"
+        }
+    },
+    "require": {}
 }
