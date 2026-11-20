@@ -32,7 +32,9 @@ abstract class Controller
      */
     protected function view($viewName, $data = [])
     {
-        $viewFile = VIEWS_NAMESPACE. $viewName . '.php';
+       $viewFile = VIEWS_PATH . DIRECTORY_SEPARATOR
+        . str_replace(['/', '\\'], DIRECTORY_SEPARATOR, $viewName)
+        . '.php';
 
         if (file_exists($viewFile)) {
             // Transforma as chaves do array de dados em variáveis
@@ -52,6 +54,7 @@ abstract class Controller
             echo $content;
             // require_once ROOT . '/app/Views/layouts/footer.php';
         } else {
+            echo $viewFile;
             self::handler(500,"Erro: View '{$viewName}' não encontrada.");
         }
     }
