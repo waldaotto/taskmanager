@@ -1,56 +1,57 @@
+
+/* RESET */
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     padding: 0;
-
+    font-family: Arial, sans-serif;
 }
+
 /* HEADER */
 header {
     width: 100%;
-    height: 75px;
-    padding: 0 8%;
+    min-height: 65px;
+    padding: 0 16px;
 
     display: flex;
     align-items: center;
     justify-content: space-between;
 
     background-color: #111111;
-    box-sizing: border-box;
-
     border-bottom: 2px solid #FF7900;
-
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-header a,header i {
-    color: white;
+/* LINKS E ÍCONES */
+header a,
+header i {
+    color: #FFFFFF;
 }
-
 
 /* LOGOTIPO */
 .logotipo-box a {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
 
     color: #FFFFFF;
     text-decoration: none;
 
-    font-size: 22px;
+    font-size: 20px;
     font-weight: 700;
-    letter-spacing: -0.5px;
 }
 
 .logotipo-box img {
-    width: 36px;
-    height: 36px;
+    width: 32px;
+    height: 32px;
     object-fit: contain;
 }
 
 /* MENU */
 .menu ul {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+    display: none;
 
     list-style: none;
     margin: 0;
@@ -59,20 +60,39 @@ header a,header i {
 
 .menu li a {
     display: block;
-    padding: 10px 16px;
+    padding: 12px 16px;
 
     color: #FFFFFF;
     text-decoration: none;
-
     font-size: 15px;
-    font-weight: 500;
 
     border-radius: 6px;
     transition: 0.2s ease;
-    font-family: 'Arial';
 }
 
-/* HOVER */
+/* BOTÃO MENU MOBILE */
+.menu-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 42px;
+    height: 42px;
+
+    background: transparent;
+    border: none;
+    border-radius: 6px;
+
+    color: #FF7900;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* INTERAÇÃO */
+.menu-toggle:hover {
+    background-color: #252525;
+}
+
 .menu li a:hover {
     color: #FF7900;
     background-color: #252525;
