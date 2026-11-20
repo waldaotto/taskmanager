@@ -1,6 +1,7 @@
 <?php
 
-define('CONTROLLER_NAMESPACE',"app\\Controllers");
-define('MODEL_NAMESPACE',"app\\Models");
-define('VIEWS_NAMESPACE',"app\\Views");
+define('CONTROLLER_NAMESPACE',"App\\Controllers");
+define('MODEL_NAMESPACE',"App\\Models");
+define('VIEWS_NAMESPACE',"App\\Views");
 define('BASE_PATH',"/taskmanager");
+define('CSS_PATH','Assets\\css\\');

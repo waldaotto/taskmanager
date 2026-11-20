@@ -1,5 +1,8 @@
 <?php
+declare(strict_types=1);
+
 define('ROOT', dirname(__DIR__));
+
 require_once ROOT.'/vendor/autoload.php';
 require_once __DIR__."/../App/Core/defines.php";
 
@@ -10,8 +13,9 @@ $dotenv = Dotenv\Dotenv::createImmutable(
 $dotenv->load();
 
 use App\Core\Router;
+use App\Core\ErrorHandler;
 $router = new Router();
 
-echo $_ENV["APP_NAME"];
+$router->execute();
 
 
