@@ -12,6 +12,7 @@
             <h1>ERRO</h1>
             <h3>Código 404</h3>
             <p><?= htmlspecialchars($message ?? 'ERRO',ENT_QUOTES,'UTF-8') ?></p>
+            <a href="/"><- Voltar</a>
         </div>
     </main>
 </body>
