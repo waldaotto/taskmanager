@@ -7,6 +7,7 @@
     <link rel="icon" type="image/png" href="<?= IMG_PATH ?>icon.png">
     <link rel="stylesheet" href="<?= CSS_PATH ?>/layouts/header.css">
     <link rel="stylesheet" href="<?= PUBLIC_PATH ?>/fafa-icons/css/font-awesome.min.css">
+    <script defer src="<?= JS_PATH ?>/menu.js"></script>
 </head>
 <body>
     <header>
@@ -25,7 +26,7 @@
             </ul>
         </nav>
 
-        <button class="menu-toggle" aria-label="Abrir menu">
+        <button class="menu-toggle" aria-label="Abrir menu" onclick="menuToggle()">
             <i class="fa fa-bars" aria-hidden="true"></i>
         </button>
     </header>

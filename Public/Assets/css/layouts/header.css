@@ -97,3 +97,40 @@ header i {
     color: #FF7900;
     background-color: #252525;
 }
+
+/* MENU */
+.menu {
+    position: absolute;
+    top: 65px;
+    left: 0;
+
+    width: 100%;
+    padding: 10px 16px;
+
+    background-color: #111111;
+    border-bottom: 2px solid #FF7900;
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+
+    transition:
+        opacity 0.3s ease,
+        transform 0.3s ease,
+        visibility 0.3s ease;
+}
+
+.menu ul {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* MENU ABERTO */
+.menu.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
