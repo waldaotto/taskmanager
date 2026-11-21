@@ -136,14 +136,12 @@ APP_NAME=TaskManager
 APP_ENV=local
 APP_DEBUG=true
 
-DB_HOST=localhost
-DB_PORT=3306
-DB_DB=taskmanager
-DB_USER=root
-DB_PASSWORD=
+HOST=localhost
+PORT=3306
+DB=taskmanager
+USER=root
+PASSWORD=
 ```
-
-Ajuste as credenciais de acordo com a configuração do seu MySQL.
 
 ### 5. Configure o banco de dados
 
