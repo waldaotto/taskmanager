@@ -2,6 +2,7 @@
 
 namespace App\Models;
 use App\Core\Model;
+use Exception;
 use PDOException;
 
 final class TaskModel extends Model 
@@ -20,7 +21,7 @@ final class TaskModel extends Model
             $stmt = $this->cursor->prepare($sql);
             $stmt->execute([':today'=>date('Y-m-d')]);
         } catch (PDOException $error) {
-            throw $error("Erro durante conexão com banco de dados: $error");
+            throw new Exception("Erro durante conexão com banco de dados: $error");
         }
 
         $result = $stmt->fetchAll();
@@ -38,12 +39,12 @@ final class TaskModel extends Model
     public function total_tasks():int 
     {
         $id = $_SESSION['user_id_login'];
-        $sql = "SELECT COUNT(*) FROM {$this->table} AND user_id = {$id}";
+        $sql = "SELECT COUNT(*) FROM {$this->table} where user_id = {$id}";
         try{
             $stmt = $this->cursor->prepare($sql);
             $stmt->execute();
         } catch (PDOException $error) {
-            throw $error("Erro durante conexão com banco de dados: $error");
+            throw new Exception("Erro durante conexão com banco de dados: $error");
         }
 
         return (int) $stmt->fetchColumn();
@@ -57,7 +58,7 @@ final class TaskModel extends Model
             $stmt = $this->cursor->prepare($sql);
             $stmt->execute();
         } catch (PDOException $error) {
-            throw $error("Erro durante conexão com banco de dados: $error");
+            throw new Exception("Erro durante conexão com banco de dados: $error");
         }
 
         return (int) $stmt->fetchColumn();
@@ -71,7 +72,7 @@ final class TaskModel extends Model
             $stmt = $this->cursor->prepare($sql);
             $stmt->execute();
         } catch (PDOException $error) {
-            throw $error("Erro durante conexão com banco de dados: $error");
+            throw new Exception("Erro durante conexão com banco de dados: $error");
         }
 
         return (int) $stmt->fetchColumn();

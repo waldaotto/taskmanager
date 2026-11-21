@@ -1,0 +1,378 @@
+
+:root {
+    --preto: #171715;
+    --preto-claro: #22221f;
+    --surface: #292925;
+
+    --laranja: #b87943;
+    --laranja-hover: #a36a3b;
+
+    --branco: #e8e3d9;
+    --cinza: #aaa69d;
+    --borda: #3a3934;
+
+    --verde: #71836a;
+    --verde-fundo: #d4ddce;
+    --verde-texto: #52634c;
+
+    --pendente-fundo: #e4d2bf;
+    --pendente-texto: #805a38;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    background-color: var(--preto);
+    color: var(--branco);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* CONTEÚDO PRINCIPAL */
+
+main {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 35px 20px 50px;
+}
+
+section {
+    width: 100%;
+    margin-bottom: 35px;
+}
+
+/* TÍTULO */
+
+.hero-title {
+    width: fit-content;
+    margin-bottom: 25px;
+
+    color: var(--branco);
+    font-size: 1.8rem;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+}
+
+.hero-title::after {
+    content: "";
+    display: block;
+
+    width: 38px;
+    height: 2px;
+
+    margin-top: 9px;
+    background-color: var(--laranja);
+}
+
+/* BUSCA */
+
+.search {
+    width: 100%;
+    padding: 20px;
+
+    background-color: var(--preto-claro);
+    border: 1px solid var(--borda);
+    border-radius: 5px;
+}
+
+.search-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.search-form label {
+    color: var(--branco);
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.search-form select,
+.search-form input[type="text"] {
+    width: 100%;
+    min-width: 0;
+    padding: 12px;
+
+    background-color: var(--preto);
+    color: var(--branco);
+
+    border: 1px solid var(--borda);
+    border-radius: 4px;
+
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.search-form select:focus,
+.search-form input[type="text"]:focus {
+    border-color: var(--laranja);
+}
+
+.search-form select option {
+    background-color: var(--preto-claro);
+    color: var(--branco);
+}
+
+.search-form input::placeholder {
+    color: #77746d;
+}
+
+.search-form input[type="submit"] {
+    width: 100%;
+    padding: 12px;
+
+    background-color: var(--laranja);
+    color: var(--preto);
+
+    border: none;
+    border-radius: 4px;
+
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.search-form input[type="submit"]:hover {
+    background-color: var(--laranja-hover);
+}
+
+/* LISTA DE TAREFAS */
+
+.tasks-group {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+}
+
+/* CARD */
+
+.task {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+
+    min-width: 0;
+    padding: 20px;
+
+    background-color: var(--branco);
+    border: 1px solid #d3cec3;
+    border-left: 3px solid;
+    border-radius: 5px;
+}
+
+.task-title {
+    color: #292823;
+    font-size: 1.05rem;
+    font-weight: 600;
+    overflow-wrap: anywhere;
+}
+
+.task-description {
+    color: #65635c;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+.task-date {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    color: #77736a;
+    font-size: 0.82rem;
+}
+
+.task-date i {
+    color: #8b867c;
+}
+
+/* STATUS PENDENTE */
+
+.task.pendente {
+    border-left-color: var(--laranja);
+}
+
+.task.pendente .task-status {
+    background-color: var(--pendente-fundo);
+    color: var(--pendente-texto);
+}
+
+/* STATUS CONCLUÍDA */
+
+.task.concluida {
+    border-left-color: var(--verde);
+}
+
+.task.concluida .task-status {
+    background-color: var(--verde-fundo);
+    color: var(--verde-texto);
+}
+
+/* ETIQUETA DE STATUS */
+
+.task-status {
+    align-self: flex-start;
+    padding: 5px 10px;
+
+    border-radius: 3px;
+    font-size: 0.78rem;
+    font-weight: 600;
+}
+
+/* AÇÕES */
+
+.actions {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+
+    width: 100%;
+    margin-top: 5px;
+    padding-top: 12px;
+
+    border-top: 1px solid #d3cec3;
+}
+
+.actions button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 36px;
+    height: 36px;
+
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-radius: 4px;
+
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+/* EDITAR */
+
+.actions .edit {
+    color: #80603f;
+    border-color: #d3c2ae;
+}
+
+.actions .edit:hover {
+    background-color: #e4d2bf;
+}
+
+/* EXCLUIR */
+
+.actions .delete {
+    color: #925d50;
+    border-color: #ddc3bb;
+}
+
+.actions .delete:hover {
+    background-color: #ead6d0;
+}
+
+/* MENSAGEM VAZIA */
+
+.message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+
+    width: 100%;
+    padding: 35px 20px;
+
+    background-color: var(--preto-claro);
+    border: 1px solid var(--borda);
+    border-radius: 5px;
+
+    color: var(--cinza);
+    font-size: 0.95rem;
+    text-align: center;
+}
+
+.message i {
+    font-size: 1.5rem;
+    color: var(--laranja);
+}
+
+/* ACESSIBILIDADE */
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+    outline: 2px solid var(--laranja);
+    outline-offset: 2px;
+}
+
+/* TABLET */
+
+@media (min-width: 600px) {
+    main {
+        padding: 45px 30px 60px;
+    }
+
+    .search-form {
+        display: grid;
+        grid-template-columns: auto minmax(120px, 0.7fr) minmax(180px, 1.5fr) auto;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .search-form input[type="submit"] {
+        width: auto;
+        padding: 12px 22px;
+    }
+
+    .tasks-group {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* DESKTOP */
+
+@media (min-width: 900px) {
+    main {
+        padding: 55px 35px 70px;
+    }
+
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .tasks-group {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+    }
+
+    .task {
+        padding: 22px;
+    }
+}
+
+/* MOVIMENTO REDUZIDO */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+        animation: none !important;
+    }
+}

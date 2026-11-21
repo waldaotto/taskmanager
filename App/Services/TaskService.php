@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\TaskModel;
 use App\Models\TasksModel;
+use App\Models\UserTasksModel;
 use Exception;
 use InvalidArgumentException;
 
@@ -40,5 +41,19 @@ final class TaskService
     public function get_today_tasks():array
     {
         return $this->model->today_tasks() ?? [];
+    }
+
+    /**
+     * @return int Valor do id do insert
+     */
+    public function create_task(string $titulo, string $descricao, string $data):int
+    {
+
+        return $this->model->create(['titulo'=>$titulo,'descricao'=>$descricao,'data_task'=>$data,'status'=>1,'user_id'=>$_SESSION['user_id_login']]);
+    }
+
+    public function delete_task(int $id):bool
+    {
+        return $this->model->delete($id);
     }
 }

@@ -13,10 +13,10 @@
         <div class="form-login">
             <form action="/auth" method="post">
                 <label for="email">Seu e-mail</label>
-                <input type="email" name="email" id="email" placeholder="Ex: seuemail@email.com" value="<?= $email_input ?? '' ?>">
+                <input type="email" name="email" id="email" placeholder="Ex: seuemail@email.com" value="<?= $email_input ?? '' ?>" required>
 
                 <label for="senha">Sua senha</label>
-                <input type="password" name="senha" id="senha">
+                <input type="password" name="senha" id="senha" required>
 
                 <input type="submit" value="Acessar">
             </form>

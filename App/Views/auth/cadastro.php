@@ -13,16 +13,16 @@
         <div class="form-login">
             <form action="/auth/cadastro" method="post">
                 <label for="nome">Seu nome de usuario</label>
-                <input type="text" name="nome" id="nome" maxlength="20" placeholder="Ex: usuario" value="<?= $nome_fill ?? '' ?>">
+                <input type="text" name="nome" id="nome" maxlength="20" placeholder="Ex: usuario" value="<?= $nome_fill ?? '' ?>" required>
 
                 <label for="email">Seu e-mail</label>
-                <input type="email" name="email" id="email" placeholder="Ex: seuemail@email.com" value="<?= $email_fill ?? '' ?>">
+                <input type="email" name="email" id="email" placeholder="Ex: seuemail@email.com" value="<?= $email_fill ?? '' ?>" required>
 
                 <label for="senha">Sua senha</label>
-                <input type="password" name="senha" id="senha">
+                <input type="password" name="senha" id="senha" required>
 
                 <label for="senha-confirm">Confirmar senha</label>
-                <input type="password" name="senha-confirm" id="senha-confirm">
+                <input type="password" name="senha-confirm" id="senha-confirm" required>
 
                 <input type="submit" value="Criar conta">
             </form>
