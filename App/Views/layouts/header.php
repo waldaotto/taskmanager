@@ -20,7 +20,7 @@
 
         <nav class="menu">
             <ul>
-                <li><a href="/">Menu</a></li>
+                <li><a href="/app">Menu</a></li>
                 <li><a href="/tarefas">Tarefas</a></li>
                 <li><a href="/agenda">Agenda</a></li>
             </ul>

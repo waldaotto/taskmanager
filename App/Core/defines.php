@@ -6,7 +6,7 @@ define('CONTROLLER_NAMESPACE',"App\\Controllers");
 define('MODEL_NAMESPACE',"App\\Models");
 define('VIEWS_NAMESPACE',"App\\Views");
 
-define('BASE_PATH',"/taskmanager");
+define('BASE_PATH',"taskmanager/");
 
 define('VIEWS_PATH',APP_PATH."Views");
 

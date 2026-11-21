@@ -14,6 +14,8 @@ final class Router
                 '/' => fn() =>  self::load('HomeController',"Index"),
                 '/auth' => fn() =>  self::load('AuthController',"index"),
                 '/auth/cadastro' => fn() =>  self::load('AuthController',"index_cadastro"),
+                '/app' => fn() =>  self::load('DashboardController',"index"),
+                
             ],
 
             'post' => [

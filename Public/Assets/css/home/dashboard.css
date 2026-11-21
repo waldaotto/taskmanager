@@ -1,0 +1,211 @@
+
+:root {
+    --preto: #111111;
+    --preto-claro: #1c1c1c;
+    --laranja: #ff7900;
+    --branco: #ffffff;
+    --cinza: #bdbdbd;
+    --borda: #383838;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background-color: var(--preto);
+    color: var(--branco);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+main {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px 18px 50px;
+}
+
+/* Saudação */
+
+.hero-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 30px;
+    line-height: 1.3;
+}
+
+.hero-title::after {
+    content: "";
+    display: block;
+    width: 55px;
+    height: 4px;
+    margin-top: 12px;
+    background-color: var(--laranja);
+    border-radius: 5px;
+}
+
+/* Seções */
+
+.hero-section {
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.hero-subtitle {
+    font-size: 1.3rem;
+    margin-bottom: 18px;
+    color: var(--branco);
+}
+
+/* Tarefas do dia */
+
+.today-tasks {
+    width: 100%;
+}
+
+.group-tasks {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.task {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 18px;
+    background-color: var(--preto-claro);
+    border: 1px solid var(--borda);
+    border-left: 4px solid var(--laranja);
+    border-radius: 8px;
+    transition: transform 0.2s, border-color 0.2s;
+}
+
+.task:hover {
+    transform: translateY(-3px);
+    border-color: var(--laranja);
+}
+
+.task-title {
+    font-size: 1.05rem;
+    font-weight: bold;
+    color: var(--branco);
+}
+
+.task-description {
+    color: var(--cinza);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+.task-data {
+    align-self: flex-start;
+    padding: 5px 10px;
+    background-color: rgba(255, 121, 0, 0.12);
+    color: var(--laranja);
+    border-radius: 5px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+/* Mensagem sem tarefas */
+
+.hero-message {
+    display: block;
+    padding: 25px 18px;
+    background-color: var(--preto-claro);
+    border: 1px dashed var(--borda);
+    border-radius: 8px;
+    color: var(--cinza);
+    text-align: center;
+}
+
+.hero-message:empty::before {
+    content: "Você não possui tarefas para hoje. Aproveite seu tempo!";
+}
+
+/* Indicadores */
+
+.task-resume-group {
+    width: 100%;
+}
+
+.block-resume {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+}
+
+.total-tasks {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 22px;
+    background-color: var(--preto-claro);
+    border: 1px solid var(--borda);
+    border-radius: 8px;
+    border-bottom: 3px solid var(--laranja);
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--laranja);
+    transition: transform 0.2s;
+}
+
+.total-tasks:hover {
+    transform: translateY(-4px);
+}
+
+.total-tasks h3 {
+    color: var(--cinza);
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+/* Tablets */
+
+@media (min-width: 600px) {
+    main {
+        padding: 40px 30px 60px;
+    }
+
+    .hero-title {
+        font-size: 2.2rem;
+    }
+
+    .block-resume {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .task {
+        padding: 20px;
+    }
+}
+
+/* Desktops */
+
+@media (min-width: 900px) {
+    main {
+        padding: 50px 35px 70px;
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.5rem;
+    }
+
+    .block-resume {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .task {
+        padding: 22px;
+    }
+}

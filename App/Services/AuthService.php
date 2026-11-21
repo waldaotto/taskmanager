@@ -34,16 +34,17 @@ final class AuthService
 
         }
 
-        $this->login((int)$user['id']);
+        $this->login((int)$user['id'],(string)$user["nome"]);
         return true;
     
         
     }
 
     /**Efetua o login na sesssion */
-    private function login(int $user_id): void
+    private function login(int $user_id,string $user_name): void
     {
         session_regenerate_id(true);
+        $_SESSION['user_name'] = $user_name;
         $_SESSION['user_id_login'] = $user_id;
     }
 

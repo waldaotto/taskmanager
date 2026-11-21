@@ -1,0 +1,16 @@
+<?php
+namespace App\Controllers;
+use App\Core\Controller;
+use App\Core\ErrorHandler;
+
+final class DashboardController extends Controller 
+{
+
+    use ErrorHandler;
+
+    public function index(): void
+    {
+        $this->view('layouts\\header');
+        $this->view('home\\dashboard');
+    }
+}

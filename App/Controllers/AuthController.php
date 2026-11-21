@@ -20,7 +20,7 @@ final class AuthController extends Controller
     public function index(string $message = ''): void
     {
         if (!empty($_SESSION["user_id_login"])){
-            $this->redirect('');
+            $this->redirect('app');
         }
 
         $data = $this->get_placeholder();
@@ -54,7 +54,7 @@ final class AuthController extends Controller
             $auth = $this->service->auth($email,$senha);
 
             if ($auth){
-                $this->redirect('/');
+                $this->redirect('app');
             }
             
         }
@@ -72,7 +72,7 @@ final class AuthController extends Controller
 
     public function index_cadastro(array $data = []){
         if (!empty($_SESSION["user_id_login"])){
-            $this->redirect('');
+            $this->redirect('app');
 
         }
 
@@ -113,7 +113,7 @@ final class AuthController extends Controller
             $user_id = (int) $this->service->cadastrar($email,$nome,$senha);
             $auth = $this->service->auth($email,$senha);
 
-            $this->redirect('');
+            $this->redirect('app');
             
         }
         catch (InvalidArgumentException $e){
