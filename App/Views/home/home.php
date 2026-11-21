@@ -24,6 +24,7 @@
                 <li><a href="#sobre">Sobre</a></li>
                 <li><a href="#cadastro">Cadastro</a></li>
                 <li><a href="#contato">Contato</a></li>
+                <li><a href="/auth">Entrar ></a></li>
             </ul>
         </nav>
 

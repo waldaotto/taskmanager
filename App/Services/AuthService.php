@@ -46,4 +46,22 @@ final class AuthService
         session_regenerate_id(true);
         $_SESSION['user_id_login'] = $user_id;
     }
+
+    public function logout(): void 
+    {
+        session_destroy();
+    }
+
+    /**
+     * @return int ID do insert
+     */
+    public function cadastrar(string $email,string $nome,string $senha): int 
+    {
+
+        if (!empty($this->model->find_by_field('email',$email))){
+            throw new InvalidArgumentException('E-mail já está cadastrado a uma conta!');
+        }
+
+        return $this->model->create(['nome'=>$nome,'email'=>$email,'senha'=>password_hash($senha, PASSWORD_ARGON2ID)]);
+    }
 }

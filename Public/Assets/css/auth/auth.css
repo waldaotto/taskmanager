@@ -65,7 +65,7 @@ main h2::after {
 }
 
 .form-login input[type="email"],
-.form-login input[type="password"] {
+.form-login input[type="password"],.form-login input[type="text"] {
     width: 100%;
     padding: 13px;
     background-color: var(--preto);

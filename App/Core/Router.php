@@ -13,10 +13,12 @@ final class Router
             'get' => [
                 '/' => fn() =>  self::load('HomeController',"Index"),
                 '/auth' => fn() =>  self::load('AuthController',"index"),
+                '/auth/cadastro' => fn() =>  self::load('AuthController',"index_cadastro"),
             ],
 
             'post' => [
                 '/auth' => fn() =>  self::load('AuthController',"login"),
+                '/auth/cadastro' => fn() =>  self::load('AuthController',"cadastro"),
             ]
         ];
     }
@@ -80,7 +82,7 @@ final class Router
 
             // VERIFICAÇÃO DE LOGIN
             // Nao logado redireciona qualquer tela para a home
-            if (empty($_SESSION["user_id_login"]) && $uri != '/auth')
+            if (empty($_SESSION["user_id_login"]) && $uri != '/auth' && $uri != '/auth/cadastro')
             {   
                 return $routes['get']['/']();
             }
