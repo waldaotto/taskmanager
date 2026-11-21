@@ -23,7 +23,12 @@ final class TaskModel extends Model
             throw $error("Erro durante conexão com banco de dados: $error");
         }
 
-        return $stmt->fetch();
+        $result = $stmt->fetchAll();
+        if (!$result){
+            return [];
+        }
+        return $result;
+       
 
     }
 

@@ -40,7 +40,7 @@ abstract class Model{
 
         $sql = "
             INSERT INTO {$this->table}
-            ({$columns})
+            ({$columns})    
             VALUES ({$placeholders})
         ";
 
