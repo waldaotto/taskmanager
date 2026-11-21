@@ -16,6 +16,8 @@ use App\Core\Router;
 use App\Core\ErrorHandler;
 $router = new Router();
 
+session_start();
+
 $router->execute();
 
 

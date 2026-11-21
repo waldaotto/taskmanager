@@ -12,9 +12,12 @@ final class Router
         return [
             'get' => [
                 '/' => fn() =>  self::load('HomeController',"Index"),
+                '/auth' => fn() =>  self::load('AuthController',"index"),
             ],
 
-            'post' => []
+            'post' => [
+                '/auth' => fn() =>  self::load('AuthController',"login"),
+            ]
         ];
     }
 
@@ -72,6 +75,14 @@ final class Router
 
             if (!is_callable($router)){
                 self::handler(404,"Route not callable");
+            }
+
+
+            // VERIFICAÇÃO DE LOGIN
+            // Nao logado redireciona qualquer tela para a home
+            if (empty($_SESSION["user_id_login"]) && $uri != '/auth')
+            {   
+                return $routes['get']['/']();
             }
 
             return $router();

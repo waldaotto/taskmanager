@@ -58,7 +58,7 @@
 
         <section id="cadastro" class="cadastro">
             <div class="login">
-                <form action="/auth" method="post">
+                <form action="/auth" method="get">
                     <label for="nome">Seu nome</label>
                     <input type="text" name="nome" id="nome" placeholder="seu nome">
 

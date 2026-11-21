@@ -20,7 +20,7 @@ class Connection {
      */
     public function connect(): PDO {
         // Chaves {} para interpolar o array dentro da string
-        $dsn = "mysql:host={$_ENV['host']};port={$_ENV['port']};dbname={$_ENV['db']};charset=utf8mb4";
+        $dsn = "mysql:host={$_ENV['HOST']};port={$_ENV['PORT']};dbname={$_ENV['DB']};charset=utf8mb4";
 
         $options = [
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
@@ -31,8 +31,8 @@ class Connection {
         try{
             $this->pdo = new PDO(
                 $dsn,
-                $_ENV['user'],
-                $_ENV['password'],
+                $_ENV['USER'],
+                $_ENV['PASSWORD'],
                 $options
             );
         }catch(PDOException $e){
