@@ -12,7 +12,7 @@
             <h1>ERRO</h1>
             <h3>Código 500</h3>
             <p><?= htmlspecialchars($message ?? 'erro',ENT_QUOTES,'UTF-8') ?></p>
-            <a href="/"><- Voltar</a>
+            <a href="/"><- Voltar</a>   
         </div>
     </main>
 </body>

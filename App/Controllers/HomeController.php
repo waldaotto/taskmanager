@@ -10,7 +10,6 @@ final class HomeController extends Controller
 
     public function index(): void
     {
-        $this->view('layouts\\header');
         $this->view('home\\home');
     }
 }
