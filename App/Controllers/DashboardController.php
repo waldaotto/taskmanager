@@ -29,7 +29,7 @@ final class DashboardController extends Controller
     {
         try{
             $kpis = $this->service->get_kpis();
-            $today = $this->service->get_today_tasks();
+            $today = $this->formatar_data($this->service->get_today_tasks());
 
         }catch(Exception $e){
             self::handler(500,$e->getMessage());
@@ -37,5 +37,22 @@ final class DashboardController extends Controller
         }
 
         return ['task_kpi'=>$kpis ?? [],'today_tasks'=>$today ?? []];
+    }
+
+    private function formatar_data(array $today_tasks):array
+    {
+        if (empty($today_tasks)){
+            return [];
+        }
+        
+        $array_formatado = array_map(
+            fn($task) => [
+                ...$task,
+                'data_task' => date('d/m/Y', strtotime($task['data_task']))
+            ],
+            $today_tasks
+        );
+
+        return $array_formatado;
     }
 }
