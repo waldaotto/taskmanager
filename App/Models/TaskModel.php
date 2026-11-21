@@ -13,8 +13,8 @@ final class TaskModel extends Model
      */
     public function today_tasks():array
     {
-
-        $sql = "SELECT * FROM {$this->table} WHERE data_task = :today";
+        $id = $_SESSION['user_id_login'];
+        $sql = "SELECT * FROM {$this->table} WHERE data_task = :today AND user_id = {$id}";
 
         try{
             $stmt = $this->cursor->prepare($sql);
@@ -37,7 +37,8 @@ final class TaskModel extends Model
      */
     public function total_tasks():int 
     {
-        $sql = "SELECT COUNT(*) FROM {$this->table}";
+        $id = $_SESSION['user_id_login'];
+        $sql = "SELECT COUNT(*) FROM {$this->table} AND user_id = {$id}";
         try{
             $stmt = $this->cursor->prepare($sql);
             $stmt->execute();
@@ -50,7 +51,8 @@ final class TaskModel extends Model
 
     public function total_concluida():int 
     {
-         $sql = "SELECT COUNT(*) FROM {$this->table} WHERE status = 0";
+        $id = $_SESSION['user_id_login'];
+        $sql = "SELECT COUNT(*) FROM {$this->table} WHERE status = 0 AND user_id = {$id}";
         try{
             $stmt = $this->cursor->prepare($sql);
             $stmt->execute();
@@ -63,7 +65,8 @@ final class TaskModel extends Model
 
     public function total_pendente():int 
     {
-         $sql = "SELECT COUNT(*) FROM {$this->table} WHERE status = 1";
+        $id = $_SESSION['user_id_login'];
+        $sql = "SELECT COUNT(*) FROM {$this->table} WHERE status = 1 AND user_id = {$id}";
         try{
             $stmt = $this->cursor->prepare($sql);
             $stmt->execute();
