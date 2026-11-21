@@ -18,11 +18,11 @@ final class TarefasController extends Controller
         $this->service = new TaskService;
     }
 
-    public function index(string $message = ''): void
+    public function index(array $data = []): void
     {
 
         $this->view('layouts\\header');
-        $this->view('tarefas\\tarefas');
+        $this->view('tarefas\\tarefas',['tasks'=>$data]);
     }
 
     public function criar_tarefa(): void
@@ -96,7 +96,7 @@ final class TarefasController extends Controller
         $filter_value = (int) $_GET["filter_value"];
 
         if(empty($filter_value) || empty($filter)){
-            $this->redirect('/tarefas');
+            $this->index($this->service->find_all());
         }
     }
 }

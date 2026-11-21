@@ -77,4 +77,11 @@ final class TaskModel extends Model
 
         return (int) $stmt->fetchColumn();
     }
+
+    public function find_all():array {
+        $id = $_SESSION["user_id_login"];
+        $stmt = $this->cursor->query("SELECT * FROM {$this->table} AND user_id = {$id}");
+        return $stmt->fetchAll();
+
+    }
 }

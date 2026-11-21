@@ -56,4 +56,9 @@ final class TaskService
     {
         return $this->model->delete($id);
     }
+
+    public function find_all():array
+    {
+        return $this->model->find_all();
+    }
 }
