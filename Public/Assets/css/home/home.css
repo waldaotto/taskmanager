@@ -4,13 +4,16 @@
 ======================================== */
 
 :root {
-    --black: #111111;
-    --black-light: #1A1A1A;
-    --surface: #202020;
-    --orange: #FF7900;
-    --orange-hover: #E66D00;
-    --white: #FFFFFF;
-    --gray: #AAAAAA;
+    --black: #171715;
+    --black-light: #22221f;
+    --surface: #292925;
+
+    --orange: #b87943;
+    --orange-hover: #a36a3b;
+
+    --white: #e8e3d9;
+    --gray: #aaa69d;
+    --border: #3a3934;
 }
 
 * {
@@ -40,7 +43,6 @@ section {
     padding: 65px 20px;
 }
 
-
 /* ========================================
    SOBRE / HERO
 ======================================== */
@@ -50,11 +52,10 @@ section {
     flex-direction: column;
     align-items: center;
     gap: 35px;
-
     background-color: var(--black);
 }
 
-/* CABEÇALHO */
+/* Cabeçalho */
 
 .cabecalho-sobre {
     width: 100%;
@@ -63,30 +64,27 @@ section {
 
 .hero-title {
     margin: 0;
-
     color: var(--white);
     font-size: clamp(32px, 8vw, 48px);
-    font-weight: 800;
-    letter-spacing: -1.5px;
+    font-weight: 600;
+    letter-spacing: -1px;
 }
 
 .hero-subtitle {
     margin-top: 15px;
-
     color: var(--orange);
     font-size: 17px;
     font-weight: 500;
     line-height: 1.5;
 }
 
-/* IMAGEM E TEXTO */
+/* Imagem e texto */
 
 .corpo-sobre-img {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 25px;
-
     width: 100%;
 }
 
@@ -99,21 +97,19 @@ section {
 
 .corpo-sobre-img .hero-text {
     color: var(--white);
-    font-size: 18px;
-    font-weight: 600;
+    font-size: 17px;
+    font-weight: 500;
 }
 
 .corpo-sobre-img img {
     display: block;
-
     width: 100%;
     max-width: 380px;
     height: auto;
-
     object-fit: contain;
 }
 
-/* DESCRIÇÃO */
+/* Descrição */
 
 .sobre > .hero-text {
     display: block;
@@ -122,11 +118,10 @@ section {
 
     background-color: var(--black-light);
     border-left: 3px solid var(--orange);
-    border-radius: 5px;
+    border-radius: 4px;
 
     text-align: justify;
 }
-
 
 /* ========================================
    CADASTRO
@@ -136,7 +131,6 @@ section {
     display: flex;
     align-items: center;
     justify-content: center;
-
     background-color: var(--black-light);
 }
 
@@ -146,11 +140,9 @@ section {
     padding: 30px 22px;
 
     background-color: var(--surface);
-    border: 1px solid #333333;
+    border: 1px solid var(--border);
     border-top: 3px solid var(--orange);
-    border-radius: 12px;
-
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    border-radius: 6px;
 }
 
 .login form {
@@ -161,10 +153,9 @@ section {
 
 .login label {
     margin-top: 8px;
-
     color: var(--white);
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .login input:not([type="submit"]) {
@@ -173,26 +164,25 @@ section {
     padding: 0 14px;
 
     background-color: var(--black);
-    border: 1px solid #444444;
-    border-radius: 6px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
     outline: none;
 
     color: var(--white);
     font-size: 14px;
 
-    transition: border-color 0.3s, box-shadow 0.3s;
+    transition: border-color 0.2s;
 }
 
 .login input::placeholder {
-    color: #777777;
+    color: #858178;
 }
 
 .login input:not([type="submit"]):focus {
     border-color: var(--orange);
-    box-shadow: 0 0 0 3px rgba(255, 121, 0, 0.12);
 }
 
-/* BOTÃO DE ENVIO */
+/* Botão de envio */
 
 .login input[type="submit"] {
     width: 100%;
@@ -201,21 +191,19 @@ section {
 
     background-color: var(--orange);
     border: none;
-    border-radius: 6px;
+    border-radius: 4px;
 
     color: var(--black);
     font-size: 15px;
-    font-weight: 700;
+    font-weight: 600;
 
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
+    transition: background-color 0.2s;
 }
 
 .login input[type="submit"]:hover {
     background-color: var(--orange-hover);
-    transform: translateY(-2px);
 }
-
 
 /* ========================================
    CONTATO
@@ -225,7 +213,6 @@ section {
     display: flex;
     justify-content: center;
     align-items: center;
-
     background-color: var(--black);
 }
 
@@ -233,28 +220,23 @@ section {
     width: 100%;
     max-width: 550px;
     padding: 30px 20px;
-
     text-align: center;
 }
 
 .contato-content h2 {
     margin: 0 0 20px;
-
     color: var(--white);
-    font-size: 28px;
-    font-weight: 800;
+    font-size: 26px;
+    font-weight: 600;
 }
 
 .contato-content h2::after {
     content: "";
-
     display: block;
-    width: 55px;
-    height: 3px;
+    width: 40px;
+    height: 2px;
     margin: 12px auto 0;
-
     background-color: var(--orange);
-    border-radius: 5px;
 }
 
 .contato-content p {
@@ -263,7 +245,7 @@ section {
     line-height: 1.8;
 }
 
-/* LINK DE CONTATO */
+/* Link de contato */
 
 .contato-info {
     margin-top: 25px;
@@ -275,28 +257,26 @@ section {
     justify-content: center;
     gap: 10px;
 
-    padding: 13px 22px;
+    padding: 12px 20px;
 
     background-color: var(--orange);
-    border-radius: 7px;
+    border-radius: 4px;
 
     color: var(--black);
     font-size: 15px;
-    font-weight: 700;
+    font-weight: 600;
     text-decoration: none;
 
-    transition: background-color 0.3s, transform 0.2s;
+    transition: background-color 0.2s;
 }
 
 .contato-info a:hover {
     background-color: var(--orange-hover);
-    transform: translateY(-3px);
 }
 
 .contato-info i {
-    font-size: 18px;
+    font-size: 17px;
 }
-
 
 /* ========================================
    ACESSIBILIDADE
@@ -316,5 +296,44 @@ input:focus-visible {
         scroll-behavior: auto !important;
         transition-duration: 0.01ms !important;
         animation-duration: 0.01ms !important;
+    }
+}
+
+/* ========================================
+   RESPONSIVIDADE
+======================================== */
+
+@media (min-width: 768px) {
+    section {
+        padding: 80px 35px;
+    }
+
+    .corpo-sobre-img {
+        gap: 35px;
+    }
+
+    .contato-content h2 {
+        font-size: 28px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .sobre {
+        gap: 45px;
+    }
+
+    .corpo-sobre-img {
+        flex-direction: row;
+        justify-content: center;
+        max-width: 950px;
+    }
+
+    .corpo-sobre-img .hero-text {
+        flex: 1;
+        text-align: left;
+    }
+
+    .corpo-sobre-img img {
+        max-width: 420px;
     }
 }

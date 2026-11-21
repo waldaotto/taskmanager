@@ -21,7 +21,7 @@
                         foreach($today_tasks as $task):
                         ?>
 
-                            <div class="task">
+                            <div class="task-<?= $task['status'] == 1 ? 'pendente' : 'concluida' ?>">
                                 <span class="task-title">
                                     <?= htmlspecialchars($task['titulo'], ENT_QUOTES | ENT_SUBSTITUTE,'UTF-8') ?? "Tarefa #{$task['id']}" ?>
                                 </span>
@@ -30,6 +30,9 @@
                                 </span>
                                 <span class="task-data">
                                     <?= htmlspecialchars($task['data_task'], ENT_QUOTES | ENT_SUBSTITUTE,'UTF-8') ?? '--/--/--' ?>
+                                </span>
+                                <span class="task-<?= $task['status'] == 1 ? 'pendente' : 'concluida' ?>">
+                                    <?= htmlspecialchars($task['status'] == 1 ? 'Pendente' : 'Concluida', ENT_QUOTES | ENT_SUBSTITUTE,'UTF-8') ?? '--/--/--' ?>
                                 </span>
                             </div>
                         <?php

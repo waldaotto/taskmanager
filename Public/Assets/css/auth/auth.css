@@ -1,10 +1,10 @@
-
 :root {
-    --preto: #111111;
-    --preto-claro: #1c1c1c;
-    --laranja: #ff7900;
-    --branco: #ffffff;
-    --cinza: #bdbdbd;
+    --preto: #171715;
+    --preto-claro: #22221f;
+    --laranja: #b87943;
+    --branco: #e8e3d9;
+    --cinza: #aaa69d;
+    --borda: #3a3934;
 }
 
 * {
@@ -29,14 +29,15 @@ main {
     max-width: 420px;
     background-color: var(--preto-claro);
     padding: 35px 25px;
-    border-radius: 12px;
-    border-top: 4px solid var(--laranja);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+    border: 1px solid var(--borda);
+    border-top: 3px solid var(--laranja);
+    border-radius: 6px;
 }
 
 main h2 {
     color: var(--branco);
     font-size: 2rem;
+    font-weight: 600;
     text-align: center;
     margin-bottom: 30px;
 }
@@ -44,11 +45,10 @@ main h2 {
 main h2::after {
     content: "";
     display: block;
-    width: 45px;
-    height: 3px;
+    width: 40px;
+    height: 2px;
     background-color: var(--laranja);
     margin: 10px auto 0;
-    border-radius: 5px;
 }
 
 .form-login form {
@@ -60,51 +60,51 @@ main h2::after {
 .form-login label {
     color: var(--branco);
     font-size: 0.95rem;
-    font-weight: bold;
+    font-weight: 600;
     margin-top: 10px;
 }
 
 .form-login input[type="email"],
-.form-login input[type="password"],.form-login input[type="text"] {
+.form-login input[type="password"],
+.form-login input[type="text"] {
     width: 100%;
     padding: 13px;
     background-color: var(--preto);
     color: var(--branco);
-    border: 1px solid #444;
-    border-radius: 6px;
+    border: 1px solid var(--borda);
+    border-radius: 4px;
     font-size: 1rem;
     outline: none;
-    transition: border-color 0.3s, box-shadow 0.3s;
+    transition: border-color 0.2s;
 }
 
 .form-login input:focus {
     border-color: var(--laranja);
-    box-shadow: 0 0 0 2px rgba(255, 121, 0, 0.15);
 }
 
 .form-login input::placeholder {
-    color: #888;
+    color: #77746d;
 }
 
 .form-login input[type="submit"] {
     margin-top: 20px;
     padding: 13px;
     background-color: var(--laranja);
-    color: var(--branco);
+    color: #171715;
     border: none;
-    border-radius: 6px;
+    border-radius: 4px;
     font-size: 1rem;
-    font-weight: bold;
+    font-weight: 600;
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
+    transition: background-color 0.2s;
 }
 
 .form-login input[type="submit"]:hover {
-    background-color: #e66d00;
+    background-color: #a36a3b;
 }
 
 .form-login input[type="submit"]:active {
-    transform: scale(0.98);
+    background-color: #925d34;
 }
 
 .form-login span {
@@ -119,9 +119,9 @@ main h2::after {
     margin-top: 8px;
     color: var(--laranja);
     font-size: 0.95rem;
-    font-weight: bold;
+    font-weight: 600;
     text-decoration: none;
-    transition: color 0.3s;
+    transition: color 0.2s;
 }
 
 .form-login a:hover {
@@ -140,6 +140,7 @@ main h2::after {
     }
 }
 
+/* Mensagem de erro */
 .message-login {
     width: 100%;
     padding: 12px 16px;
@@ -149,12 +150,12 @@ main h2::after {
     align-items: center;
     justify-content: center;
 
-    background-color: #fff1f0;
-    border: 1px solid #ffccc7;
-    border-left: 4px solid #e53935;
-    border-radius: 6px;
+    background-color: #302321;
+    border: 1px solid #594039;
+    border-left: 3px solid #b96b58;
+    border-radius: 4px;
 
-    color: #cf3030;
+    color: #d9a69a;
     font-size: 14px;
     font-weight: 500;
     line-height: 1.5;
@@ -171,7 +172,7 @@ main h2::after {
 @keyframes messageAppear {
     from {
         opacity: 0;
-        transform: translateY(-5px);
+        transform: translateY(-3px);
     }
 
     to {
