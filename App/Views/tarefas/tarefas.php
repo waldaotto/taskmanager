@@ -44,6 +44,11 @@
         <section>
             <h1 class="hero-title">Tarefas</h1>
 
+            <button type="button" class="btn-add" onclick="openModal('createModal')">
+                <i class="fa fa-plus" aria-hidden="true"></i>
+                Nova tarefa
+            </button>
+
             <div class="tasks-group">
 
                 <?php if (!empty($tasks)): ?>
@@ -252,6 +257,70 @@
         </div>
     </div>
 
+    <!-- MODAL DE CADASTRO -->
+<div class="modal-overlay" id="createModal">
+
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="createModalTitle">
+
+        <div class="modal-header">
+            <h2 id="createModalTitle">Nova tarefa</h2>
+
+            <button
+                type="button"
+                class="modal-close"
+                onclick="closeModal('createModal')"
+                aria-label="Fechar"
+            >
+                &times;
+            </button>
+        </div>
+
+        <form action="/tarefas/cadastrar" method="POST" class="modal-form">
+
+            <label for="create_titulo">Título</label>
+            <input
+                type="text"
+                name="titulo"
+                id="create_titulo"
+                placeholder="Título da tarefa"
+                required
+            >
+
+            <label for="create_descricao">Descrição</label>
+            <textarea
+                name="descricao"
+                id="create_descricao"
+                placeholder="Descrição da tarefa"
+                rows="4"
+            ></textarea>
+
+            <label for="create_data">Data</label>
+            <input
+                type="date"
+                name="data_task"
+                id="create_data"
+                required
+            >
+
+            <div class="modal-actions">
+
+                <button
+                    type="button"
+                    class="btn-cancel"
+                    onclick="closeModal('createModal')"
+                >
+                    Cancelar
+                </button>
+
+                <button type="submit" class="btn-confirm">
+                    Cadastrar tarefa
+                </button>
+
+            </div>
+
+        </form>
+    </div>
+</div>
 
 </body>
 </html>

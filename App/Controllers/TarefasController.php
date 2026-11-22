@@ -21,8 +21,8 @@ final class TarefasController extends Controller
     public function index(array $data = []): void
     {
 
-        $this->view('layouts\\header');
-        $this->view('tarefas\\tarefas',['tasks'=>$data]);
+        $this->view('layouts\\header',['title'=>'Tarefas']);
+        $this->view('tarefas\\tarefas',['tasks'=>$this->formatar_data($this->buscar_tarefa())]);
     }
 
     public function criar_tarefa(): void
@@ -32,20 +32,22 @@ final class TarefasController extends Controller
             self::handler(404,"Método não aceito");
         }
 
-        $tarefa_titulo = (string)($_POST['tarefa_titulo']) ?? '';
-        $tarefa_descricao = (string)($_POST['tarefa_descricao']) ?? '';
-        $tarefa_data = (string)($_POST['tarefa_data']) ?? '';
+        $tarefa_titulo = !empty($_POST['titulo']) ? trim((string) $_POST['titulo']) : '';
+        $tarefa_descricao = !empty($_POST['descricao']) ? trim((string) $_POST['descricao']) : '';
+        $tarefa_data = !empty($_POST['data_task']) ? (string) $_POST['data_task'] : '';
+
+        $data_task = date('Y/m/d', strtotime($tarefa_data));
 
         if(
             empty($tarefa_data) ||
-            empty($tarefa_descricao) ||
             empty($tarefa_titulo))
         {
-            $this->redirect('/tarefas');
+            $this->redirect('banana');
         }
 
         try {
-
+            $this->service->create_task($tarefa_titulo,$tarefa_descricao,$data_task);
+            $this->redirect('tarefas');
         }catch(Exception $e){
             self::handler(500,$e->getMessage());
         }
@@ -60,43 +62,95 @@ final class TarefasController extends Controller
             self::handler(404,"Método não aceito");
         }
 
-        $task_id = (int) $_POST["task_id"];
+        $id = !empty($_POST["id"]) ? (int) $_POST["id"] : null;
 
-        if (empty($task_id)){
-            $this->redirect('/tarefas');
+        if (empty($id)){
+            $this->redirect('tarefas');
         }
 
-        $delete = $this->service->delete_task($task_id);
+        $delete = $this->service->delete_task($id);
 
         if(!$delete){
             self::handler(500,"Erro ao deletar");
         }
 
-        $this->redirect('/tarefas');
+        $this->redirect('tarefas');
     }
 
     public function atualizar_tarefa():void
     {
-        if(strtolower(Helper::request()) != 'get'){
-            self::handler(404,"Método não aceito");
+        if(strtolower(Helper::request()) != 'post'){
+            return;
         }
+    
+        $id = !empty($_POST["id"]) ? (int) $_POST["id"] : null;
+        $titulo = !empty($_POST["titulo"]) ? trim($_POST["titulo"]) : null;
+        $descricao = !empty($_POST["descricao"]) ? trim($_POST["descricao"]) : null;
+        $data_task = !empty($_POST["data_task"]) ? $_POST["data_task"] : null;
+        $status = isset($_POST["status"]) ? (int) $_POST["status"] : null;
 
-        $task_id = (int) $_GET["task_id"];
+        $data_task = date('Y/m/d', strtotime($data_task));
 
-        // TEM QUE FAZER O DE BUCAS PRA ESSE
-    }
+        try{
+        
+            $this->service->update_task($id,['titulo'=>$titulo,'descricao'=>$descricao,'data_task'=>$data_task,'status'=>$status]);
+            $this->redirect('tarefas');
+            
+        } catch(Exception $e) {
+            self::handler(500,$e->getMessage());
+        }
+    }   
 
-    public function buscar_tarefa():void
+    public function buscar_tarefa():array
     {
-        if(strtolower(Helper::request()) != 'get'){
-            self::handler(404,"Método não aceito");
+        if(empty($_GET["filter"]) || empty( $_GET["filter_value"])){
+            return $this->service->find_all();
         }
 
-        $filter = (int) $_GET["filter"];
-        $filter_value = (int) $_GET["filter_value"];
+        $filter = (int) trim($_GET["filter"]) ?? [];
+        $filter_value = (int) trim($_GET["filter_value"]) ?? [];
 
         if(empty($filter_value) || empty($filter)){
-            $this->index($this->service->find_all());
+            return $this->service->find_all();
         }
+
+        if ($filter == 'data'){
+            try{
+                $this->index($this->service->find_data($filter_value));
+            } catch (Exception $e){
+                self::handler(500,$e->getMessage());
+            }
+        }
+
+        elseif ($filter == 'titulo'){
+            try{
+                return ($this->service->find_titulo($filter_value));
+            } catch (Exception $e){
+                self::handler(500,$e->getMessage());
+            }
+        }
+
+        else {
+            self::handler(500,"Valor inserido de filtro invalido");
+            
+        }
+        return [];
+    }
+
+    private function formatar_data(array $today_tasks):array
+    {
+        if (empty($today_tasks)){
+            return [];
+        }
+        
+        $array_formatado = array_map(
+            fn($task) => [
+                ...$task,
+                'data_task' => date('d/m/Y', strtotime($task['data_task']))
+            ],
+            $today_tasks
+        );
+
+        return $array_formatado;
     }
 }

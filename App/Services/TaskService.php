@@ -61,4 +61,18 @@ final class TaskService
     {
         return $this->model->find_all();
     }
+
+    public function find_data(string $data){
+        return $this->model->find_by_field('data_task',$data);
+    }
+
+    public function find_titulo(string $titulo){
+        return $this->model->find_by_field('titulo',$titulo);
+    }
+
+    public function update_task(int $id, array $data){
+        return $this->model->update($id,$data);
+    }
+
+
 }

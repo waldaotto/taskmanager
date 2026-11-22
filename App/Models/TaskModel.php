@@ -80,8 +80,41 @@ final class TaskModel extends Model
 
     public function find_all():array {
         $id = $_SESSION["user_id_login"];
-        $stmt = $this->cursor->query("SELECT * FROM {$this->table} AND user_id = {$id}");
+        $stmt = $this->cursor->query("SELECT * FROM {$this->table} where user_id = {$id}");
         return $stmt->fetchAll();
 
     }
+
+    public function find_by_field(string $field, mixed $value):mixed {
+
+        try{
+
+            $stmt = $this->cursor->prepare("SELECT * FROM {$this->table} WHERE {$field} = :valor AND user_id = :userid");
+            $stmt->execute([':valor' => $value,':userid'=>$_SESSION['user_id_login']]);
+            
+        } catch (PDOException $error) {
+            throw $error("Erro durante conexão com banco de dados: $error");
+        }
+
+        return $stmt->fetch();
+    }
+
+     public function update(int $id, array $data) {
+
+        $fields = [];
+
+        foreach (array_keys($data) as $key) {
+            $fields[] = "{$key} = :{$key}";
+        }
+
+        $fields = implode(', ', $fields);
+
+            $sql = "UPDATE {$this->table} SET {$fields} WHERE {$this->primaryKey} = :id AND user_id = :user_id";
+            
+            $stmt = $this->cursor->prepare($sql);
+            $data['id'] = $id;
+            $data['user_id'] = $_SESSION['user_id_login']; // Adiciona o ID aos dados para o bind
+            
+            return $stmt->execute($data);
+        }
 }

@@ -22,6 +22,9 @@ final class Router
             'post' => [
                 '/auth' => fn() =>  self::load('AuthController',"login"),
                 '/auth/cadastro' => fn() =>  self::load('AuthController',"cadastro"),
+                '/tarefas/cadastrar' => fn() =>  self::load('TarefasController',"criar_tarefa"),
+                '/tarefas/editar' => fn() =>  self::load('TarefasController',"atualizar_tarefa"),
+                '/tarefas/excluir' => fn() =>  self::load('TarefasController',"deletar_tarefa"),
             ]
         ];
     }
