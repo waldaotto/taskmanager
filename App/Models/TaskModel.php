@@ -96,7 +96,7 @@ final class TaskModel extends Model
             throw $error("Erro durante conexão com banco de dados: $error");
         }
 
-        return $stmt->fetch();
+        return $stmt->fetchAll();
     }
 
      public function update(int $id, array $data) {

@@ -20,9 +20,13 @@ final class TarefasController extends Controller
 
     public function index(array $data = []): void
     {
+        $search = $this->buscar_tarefa();
+        $tasks = !empty($search) ? $this->formatar_data($search) : [];
+
+        $autocomplete = !empty($_GET['filter_value']) ? trim($_GET['filter_value']) : '';
 
         $this->view('layouts\\header',['title'=>'Tarefas']);
-        $this->view('tarefas\\tarefas',['tasks'=>$this->formatar_data($this->buscar_tarefa())]);
+        $this->view('tarefas\\tarefas',['tasks'=>$tasks,'autocomplete'=>$autocomplete]);
     }
 
     public function criar_tarefa(): void
@@ -42,7 +46,7 @@ final class TarefasController extends Controller
             empty($tarefa_data) ||
             empty($tarefa_titulo))
         {
-            $this->redirect('banana');
+            $this->redirect('tarefas');
         }
 
         try {
@@ -107,8 +111,8 @@ final class TarefasController extends Controller
             return $this->service->find_all();
         }
 
-        $filter = (int) trim($_GET["filter"]) ?? [];
-        $filter_value = (int) trim($_GET["filter_value"]) ?? [];
+        $filter = (string) trim($_GET["filter"]);
+        $filter_value = (string) trim($_GET["filter_value"]);
 
         if(empty($filter_value) || empty($filter)){
             return $this->service->find_all();
@@ -116,7 +120,8 @@ final class TarefasController extends Controller
 
         if ($filter == 'data'){
             try{
-                $this->index($this->service->find_data($filter_value));
+               $v = $this->service->find_data($filter_value);
+                return $v ? $v : [];
             } catch (Exception $e){
                 self::handler(500,$e->getMessage());
             }
@@ -124,7 +129,8 @@ final class TarefasController extends Controller
 
         elseif ($filter == 'titulo'){
             try{
-                return ($this->service->find_titulo($filter_value));
+                $v = $this->service->find_titulo($filter_value);
+                return $v ? $v : [];
             } catch (Exception $e){
                 self::handler(500,$e->getMessage());
             }

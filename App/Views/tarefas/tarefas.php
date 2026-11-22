@@ -32,6 +32,7 @@
                         name="filter_value"
                         id="filter_value"
                         placeholder="Buscar tarefa..."
+                        value="<?= htmlspecialchars($autocomplete ?? '', ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>"
                     >
 
                     <input type="submit" value="Buscar">

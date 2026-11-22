@@ -7,7 +7,7 @@
     --laranja: #b87943;
     --laranja-hover: #a36a3b;
 
-    --branco: #e8e3d9;
+    --branco: #e7e7e7;
     --cinza: #aaa69d;
     --borda: #3a3934;
 
@@ -173,14 +173,14 @@ section {
 }
 
 .task-title {
-    color: #292823;
+    color: #101010;
     font-size: 1.05rem;
     font-weight: 600;
     overflow-wrap: anywhere;
 }
 
 .task-description {
-    color: #65635c;
+    color: #282828;
     font-size: 0.9rem;
     line-height: 1.5;
     overflow-wrap: anywhere;
@@ -191,12 +191,12 @@ section {
     align-items: center;
     gap: 7px;
 
-    color: #77736a;
+    color: #0b0b0b;
     font-size: 0.82rem;
 }
 
 .task-date i {
-    color: #8b867c;
+    color: #060606;
 }
 
 /* STATUS PENDENTE */
