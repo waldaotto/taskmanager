@@ -12,7 +12,7 @@
 <body>
     <header>
         <div class="logotipo-box">
-            <a href="/">
+            <a href="<?php isset($_SESSION['user_id_login']) ? '/app' : '/' ?>">
                 <img src="<?= IMG_PATH ?>icon.png">
                 TaskManager
             </a>
