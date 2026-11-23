@@ -105,6 +105,21 @@
                                 </button>
 
                             </div>
+
+                            <?php if ($task['status'] == 1): ?>
+                                <form action="/tarefas/concluir" method="POST" class="form-concluir">
+                                    <input
+                                        type="hidden"
+                                        name="id"
+                                        value="<?= htmlspecialchars((string) $task['id'], ENT_QUOTES, 'UTF-8') ?>"
+                                    >
+
+                                    <button type="submit" class="btn-concluir" aria-label="Concluir tarefa">
+                                        <i class="fa fa-check" aria-hidden="true"></i>
+                                        Concluir
+                                    </button>
+                                </form>
+                            <?php endif; ?>
                         </div>
 
                     <?php endforeach; ?>

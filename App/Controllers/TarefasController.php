@@ -159,4 +159,19 @@ final class TarefasController extends Controller
 
         return $array_formatado;
     }
+
+    public function concluir_tarefa(){
+        if (empty($_POST['id'])){
+            $this->redirect('baa');
+        }
+
+        $tarefa_id = (int)$_POST['id'];
+
+        try{
+            $this->service->update_task($tarefa_id,['status'=>0]);
+            $this->redirect('tarefas');
+        }catch(Exception $e){
+            self::handler(500,$e->getMessage());
+        }
+    }
 }

@@ -26,6 +26,7 @@ final class Router
                 '/tarefas/cadastrar' => fn() =>  self::load('TarefasController',"criar_tarefa"),
                 '/tarefas/editar' => fn() =>  self::load('TarefasController',"atualizar_tarefa"),
                 '/tarefas/excluir' => fn() =>  self::load('TarefasController',"deletar_tarefa"),
+                '/tarefas/concluir' => fn() =>  self::load('TarefasController',"concluir_tarefa"),
             ]
         ];
     }

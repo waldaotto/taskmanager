@@ -515,3 +515,67 @@ select:focus-visible {
         animation: none !important;
     }
 }
+
+/* FORMULÁRIO DE CONCLUSÃO */
+.form-concluir {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    margin-top: 15px;
+}
+
+/* BOTÃO CONCLUIR */
+.btn-concluir {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    padding: 9px 15px;
+
+    background-color: #71836a;
+    color: #171715;
+
+    border: none;
+    border-radius: 4px;
+
+    font-size: 0.9rem;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.btn-concluir:hover {
+    background-color: #829578;
+}
+
+.btn-concluir:active {
+    background-color: #63745d;
+}
+
+.btn-concluir:focus-visible {
+    outline: 2px solid #a5b99a;
+    outline-offset: 3px;
+}
+
+.btn-concluir i {
+    font-size: 0.95rem;
+}
+
+/* TABLET */
+@media (min-width: 600px) {
+    .form-concluir {
+        margin-top: 18px;
+    }
+
+    .btn-concluir {
+        padding: 9px 17px;
+    }
+}
+
+/* DESKTOP */
+@media (min-width: 900px) {
+    .btn-concluir {
+        padding: 10px 18px;
+    }
+}
