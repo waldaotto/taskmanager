@@ -76,6 +76,10 @@ final class AuthController extends Controller
 
         }
 
+        $ph = $this->get_placeholder();
+        $data['phemail'] = $ph['email_input'];
+        $data['phnome'] = $ph['nome_input'];
+
         $this->view('auth\\cadastro',$data);
     }
 

@@ -10,10 +10,13 @@
 
     --orange: #b87943;
     --orange-hover: #a36a3b;
+    --orange-soft: rgba(184, 121, 67, 0.12);
 
     --white: #e8e3d9;
     --gray: #aaa69d;
     --border: #3a3934;
+
+    --green: #71836a;
 }
 
 * {
@@ -24,13 +27,13 @@
 
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 75px;
+    scroll-padding-top: 80px;
 }
 
 body {
     width: 100%;
     min-height: 100vh;
-    background-color: var(--black);
+    background: var(--black);
     color: var(--white);
     font-family: Arial, Helvetica, sans-serif;
 }
@@ -42,91 +45,439 @@ main {
 
 section {
     width: 100%;
-    padding: 45px 18px;
+    padding: 65px 20px;
 }
 
+a {
+    text-decoration: none;
+}
+
+
 /* ========================================
-   SOBRE / HERO
+   ELEMENTOS GERAIS
+======================================== */
+
+.section-tag {
+    display: inline-block;
+    margin-bottom: 15px;
+    color: var(--orange);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.btn-primary,
+.btn-secondary {
+    min-height: 46px;
+    padding: 13px 18px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    border-radius: 4px;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.btn-primary {
+    background: var(--orange);
+    color: var(--black);
+    border: 1px solid var(--orange);
+}
+
+.btn-primary:hover {
+    background: var(--orange-hover);
+    border-color: var(--orange-hover);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--white);
+    border: 1px solid var(--border);
+}
+
+.btn-secondary:hover {
+    border-color: var(--orange);
+    color: var(--orange);
+}
+
+
+/* ========================================
+   HERO
 ======================================== */
 
 .sobre {
+    position: relative;
+
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 30px;
-    background-color: var(--black);
+    justify-content: center;
+
+    gap: 45px;
+
+    min-height: 600px;
+    padding-top: 75px;
+    padding-bottom: 75px;
+
+    background:
+        radial-gradient(
+            ellipse at 85% 45%,
+            rgba(184, 121, 67, 0.10),
+            transparent 48%
+        ),
+        var(--black);
 }
 
-/* Cabeçalho */
-
-.cabecalho-sobre {
+.hero-content {
     width: 100%;
+    max-width: 650px;
     text-align: center;
+}
+
+.hero-tag {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+
+    margin-bottom: 25px;
+    padding: 9px 13px;
+
+    background: var(--orange-soft);
+    border: 1px solid rgba(184, 121, 67, 0.25);
+    border-radius: 30px;
+
+    color: var(--orange);
+    font-size: 11px;
+    font-weight: 600;
 }
 
 .hero-title {
-    margin: 0;
     color: var(--white);
-    font-size: clamp(32px, 8vw, 48px);
-    font-weight: 600;
-    letter-spacing: -1px;
-    line-height: 1.2;
+    font-size: clamp(35px, 8vw, 58px);
+    font-weight: 700;
+    line-height: 1.12;
+    letter-spacing: -1.8px;
 }
 
-.hero-subtitle {
-    margin-top: 15px;
+.hero-title span {
+    display: block;
+    margin-top: 8px;
     color: var(--orange);
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 1.5;
 }
 
-/* Imagem e texto */
+.hero-description {
+    max-width: 520px;
+    margin: 23px auto 0;
 
-.corpo-sobre-img {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 22px;
-    width: 100%;
-}
-
-.hero-text {
     color: var(--gray);
     font-size: 15px;
     line-height: 1.8;
-    text-align: center;
 }
 
-.corpo-sobre-img .hero-text {
-    color: var(--white);
-    font-size: 16px;
-    font-weight: 500;
+.hero-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+
+    max-width: 330px;
+    margin: 30px auto 0;
 }
 
-.corpo-sobre-img img {
+.hero-highlights {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+
+    margin-top: 28px;
+}
+
+.hero-highlights div {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    color: var(--gray);
+    font-size: 12px;
+}
+
+.hero-highlights i {
+    color: var(--green);
+    font-size: 14px;
+}
+
+
+/* ========================================
+   IMAGEM DO HERO
+======================================== */
+
+.hero-visual {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    max-width: 480px;
+    min-height: 280px;
+}
+
+.visual-image {
+    position: relative;
+    z-index: 2;
+
+    width: 100%;
+}
+
+.visual-image img {
     display: block;
     width: 100%;
-    max-width: 380px;
     height: auto;
     object-fit: contain;
 }
 
-/* Descrição */
+.visual-decoration {
+    position: absolute;
+    border: 1px solid rgba(184, 121, 67, 0.25);
+    border-radius: 50%;
+}
 
-.sobre > .hero-text {
-    display: block;
-    width: 100%;
-    max-width: 750px;
-    padding: 18px;
+.visual-decoration-one {
+    width: 220px;
+    height: 220px;
+}
 
-    background-color: var(--black-light);
+.visual-decoration-two {
+    width: 290px;
+    height: 290px;
+    border-style: dashed;
+    opacity: 0.5;
+}
+
+.floating-card {
+    position: absolute;
+    z-index: 3;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 12px;
+
+    background: var(--surface);
     border: 1px solid var(--border);
-    border-left: 3px solid var(--orange);
+    border-radius: 5px;
+}
+
+.floating-card-top {
+    top: 8px;
+    right: 0;
+}
+
+.floating-card-bottom {
+    bottom: 5px;
+    left: 0;
+}
+
+.floating-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 32px;
+    height: 32px;
+
+    background: rgba(113, 131, 106, 0.15);
     border-radius: 4px;
 
-    text-align: justify;
+    color: #91a687;
 }
+
+.floating-icon.orange {
+    background: var(--orange-soft);
+    color: var(--orange);
+}
+
+.floating-card strong {
+    display: block;
+    color: var(--white);
+    font-size: 11px;
+}
+
+.floating-card small {
+    display: block;
+    margin-top: 4px;
+    color: var(--gray);
+    font-size: 9px;
+}
+
+
+/* ========================================
+   BENEFÍCIOS
+======================================== */
+
+.beneficios {
+    background: var(--black-light);
+}
+
+.section-heading {
+    max-width: 650px;
+    margin: 0 auto 40px;
+    text-align: center;
+}
+
+.section-heading h2,
+.cadastro-info h2 {
+    color: var(--white);
+    font-size: clamp(27px, 6vw, 38px);
+    line-height: 1.2;
+    letter-spacing: -0.8px;
+}
+
+.section-heading h2 span,
+.cadastro-info h2 span {
+    display: block;
+    color: var(--orange);
+}
+
+.section-heading p {
+    max-width: 500px;
+    margin: 17px auto 0;
+
+    color: var(--gray);
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.beneficios-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.beneficio-card {
+    padding: 25px 22px;
+
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+
+    transition: border-color 0.2s, transform 0.2s;
+}
+
+.beneficio-card:hover {
+    border-color: var(--orange);
+    transform: translateY(-4px);
+}
+
+.beneficio-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 48px;
+    height: 48px;
+    margin-bottom: 22px;
+
+    background: var(--orange-soft);
+    border: 1px solid rgba(184, 121, 67, 0.2);
+    border-radius: 5px;
+
+    color: var(--orange);
+    font-size: 20px;
+}
+
+.beneficio-card h3 {
+    margin-bottom: 12px;
+    color: var(--white);
+    font-size: 17px;
+}
+
+.beneficio-card p {
+    color: var(--gray);
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+
+/* ========================================
+   DESTAQUE
+======================================== */
+
+.destaque {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 35px;
+
+    background:
+        radial-gradient(
+            ellipse at 80% 50%,
+            rgba(184, 121, 67, 0.09),
+            transparent 55%
+        ),
+        var(--black);
+}
+
+.destaque-content {
+    width: 100%;
+    max-width: 700px;
+    text-align: center;
+}
+
+.destaque-content h2 {
+    color: var(--white);
+    font-size: clamp(28px, 6vw, 42px);
+    line-height: 1.2;
+    letter-spacing: -1px;
+}
+
+.destaque-content h2 span {
+    display: block;
+    margin-top: 8px;
+    color: var(--orange);
+}
+
+.destaque-content p {
+    max-width: 600px;
+    margin: 20px auto 25px;
+
+    color: var(--gray);
+    font-size: 14px;
+    line-height: 1.9;
+}
+
+.destaque-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 135px;
+    height: 135px;
+
+    background: var(--orange-soft);
+    border: 1px solid rgba(184, 121, 67, 0.3);
+    border-radius: 50%;
+
+    color: var(--orange);
+    font-size: 55px;
+}
+
 
 /* ========================================
    CADASTRO
@@ -134,41 +485,128 @@ section {
 
 .cadastro {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: var(--black-light);
+    gap: 40px;
+
+    background: var(--black-light);
 }
+
+.cadastro-info {
+    width: 100%;
+    max-width: 500px;
+}
+
+.cadastro-info h2 {
+    font-size: clamp(29px, 6vw, 40px);
+}
+
+.cadastro-info > p {
+    margin-top: 20px;
+    color: var(--gray);
+    font-size: 14px;
+    line-height: 1.9;
+}
+
+.cadastro-benefits {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 25px;
+}
+
+.cadastro-benefits div {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    color: var(--white);
+    font-size: 13px;
+}
+
+.cadastro-benefits i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 22px;
+    height: 22px;
+
+    background: rgba(113, 131, 106, 0.15);
+    border-radius: 50%;
+
+    color: #91a687;
+    font-size: 11px;
+}
+
+
+/* ========================================
+   FORMULÁRIO
+======================================== */
 
 .login {
     width: 100%;
     max-width: 420px;
-    padding: 28px 20px;
+    padding: 28px 22px;
 
-    background-color: var(--surface);
+    background: var(--surface);
     border: 1px solid var(--border);
     border-top: 3px solid var(--orange);
     border-radius: 6px;
 }
 
+.login-heading {
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.login-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 15px;
+
+    background: var(--orange-soft);
+    border-radius: 50%;
+
+    color: var(--orange);
+    font-size: 20px;
+}
+
+.login-heading h3 {
+    color: var(--white);
+    font-size: 21px;
+}
+
+.login-heading p {
+    margin-top: 8px;
+    color: var(--gray);
+    font-size: 13px;
+}
+
 .login form {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 10px;
 }
 
 .login label {
     margin-top: 8px;
     color: var(--white);
-    font-size: 14px;
-    font-weight: 500;
+    font-size: 13px;
+    font-weight: 600;
 }
 
-.login input:not([type="submit"]) {
+.login input {
     width: 100%;
     height: 46px;
-    padding: 0 14px;
+    padding: 0 13px;
 
-    background-color: var(--black);
+    background: var(--black);
     border: 1px solid var(--border);
     border-radius: 4px;
     outline: none;
@@ -183,32 +621,54 @@ section {
     color: #858178;
 }
 
-.login input:not([type="submit"]):focus {
+.login input:focus {
     border-color: var(--orange);
 }
 
-/* Botão de envio */
+.btn-submit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
 
-.login input[type="submit"] {
     width: 100%;
     min-height: 46px;
     margin-top: 15px;
 
-    background-color: var(--orange);
+    background: var(--orange);
     border: none;
     border-radius: 4px;
 
     color: var(--black);
-    font-size: 15px;
-    font-weight: 600;
+    font-size: 14px;
+    font-weight: 700;
 
     cursor: pointer;
     transition: background-color 0.2s;
 }
 
-.login input[type="submit"]:hover {
-    background-color: var(--orange-hover);
+.btn-submit:hover {
+    background: var(--orange-hover);
 }
+
+.login-footer {
+    display: block;
+    margin-top: 22px;
+
+    color: var(--gray);
+    font-size: 12px;
+    text-align: center;
+}
+
+.login-footer a {
+    color: var(--orange);
+    font-weight: 600;
+}
+
+.login-footer a:hover {
+    text-decoration: underline;
+}
+
 
 /* ========================================
    CONTATO
@@ -216,74 +676,114 @@ section {
 
 .contato {
     display: flex;
-    justify-content: center;
     align-items: center;
-    background-color: var(--black);
+    justify-content: center;
+
+    background: var(--black);
 }
 
 .contato-content {
     width: 100%;
-    max-width: 550px;
-    padding: 20px 10px;
+    max-width: 580px;
     text-align: center;
 }
 
 .contato-content h2 {
-    margin: 0 0 20px;
     color: var(--white);
-    font-size: 24px;
-    font-weight: 600;
-}
-
-.contato-content h2::after {
-    content: "";
-    display: block;
-    width: 40px;
-    height: 2px;
-    margin: 12px auto 0;
-    background-color: var(--orange);
+    font-size: 29px;
 }
 
 .contato-content p {
+    margin: 17px auto 25px;
+
     color: var(--gray);
-    font-size: 15px;
+    font-size: 14px;
     line-height: 1.8;
 }
 
-/* Link de contato */
-
-.contato-info {
-    margin-top: 25px;
-}
-
-.contato-info a {
+.contato-link {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
 
     max-width: 100%;
-    padding: 12px 20px;
+    padding: 13px 18px;
 
-    background-color: var(--orange);
+    background: var(--orange-soft);
+    border: 1px solid rgba(184, 121, 67, 0.35);
     border-radius: 4px;
 
-    color: var(--black);
-    font-size: 15px;
+    color: var(--orange);
+    font-size: 13px;
     font-weight: 600;
-    text-decoration: none;
 
     overflow-wrap: anywhere;
     transition: background-color 0.2s;
 }
 
-.contato-info a:hover {
-    background-color: var(--orange-hover);
+.contato-link:hover {
+    background: rgba(184, 121, 67, 0.2);
 }
 
-.contato-info i {
-    font-size: 17px;
+
+/* ========================================
+   FOOTER
+======================================== */
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+
+    width: 100%;
+    padding: 28px 20px;
+
+    background: var(--black-light);
+    border-top: 1px solid var(--border);
+
+    text-align: center;
 }
+
+.footer-content > span {
+    color: var(--white);
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.footer-content > span i {
+    margin-right: 5px;
+    color: var(--orange);
+}
+
+.footer-content p {
+    margin-top: 8px;
+    color: var(--gray);
+    font-size: 12px;
+}
+
+.footer-copy {
+    color: #77746d;
+    font-size: 11px;
+}
+
+
+/* ========================================
+   ANIMAÇÕES DE ENTRADA
+======================================== */
+
+[data-reveal] {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+[data-reveal].visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 
 /* ========================================
    ACESSIBILIDADE
@@ -304,72 +804,234 @@ input:focus-visible {
         transition-duration: 0.01ms !important;
         animation-duration: 0.01ms !important;
     }
+
+    [data-reveal] {
+        opacity: 1;
+        transform: none;
+    }
 }
+
 
 /* ========================================
    TABLETS
 ======================================== */
 
 @media (min-width: 768px) {
+
     section {
-        padding: 65px 35px;
+        padding: 85px 35px;
     }
 
     .sobre {
-        gap: 40px;
-    }
-
-    .corpo-sobre-img {
+        min-height: 680px;
         gap: 30px;
     }
 
-    .corpo-sobre-img .hero-text {
-        font-size: 17px;
+    .hero-content {
+        max-width: 700px;
+    }
+
+    .hero-actions {
+        flex-direction: row;
+        justify-content: center;
+        max-width: none;
+    }
+
+    .hero-highlights {
+        flex-direction: row;
+        justify-content: center;
+        gap: 25px;
+    }
+
+    .hero-visual {
+        max-width: 520px;
+        min-height: 350px;
+    }
+
+    .floating-card-top {
+        right: 5px;
+    }
+
+    .floating-card-bottom {
+        left: 5px;
+    }
+
+    .beneficios-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px;
+    }
+
+    .beneficio-card {
+        padding: 30px 25px;
+    }
+
+    .destaque {
+        padding-top: 90px;
+        padding-bottom: 90px;
+    }
+
+    .cadastro {
+        gap: 45px;
     }
 
     .login {
         padding: 38px 32px;
     }
 
-    .contato-content h2 {
-        font-size: 28px;
+    .footer {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
     }
 }
+
 
 /* ========================================
    DESKTOPS
 ======================================== */
 
 @media (min-width: 1024px) {
+
     section {
-        padding: 80px 40px;
+        padding: 100px 50px;
     }
 
     .sobre {
-        gap: 45px;
-    }
-
-    .corpo-sobre-img {
         flex-direction: row;
         justify-content: center;
-        max-width: 950px;
-        gap: 40px;
+        gap: 35px;
+
+        min-height: 700px;
+        padding-top: 80px;
+        padding-bottom: 80px;
     }
 
-    .corpo-sobre-img .hero-text {
+    .hero-content {
         flex: 1;
+        max-width: 570px;
         text-align: left;
     }
 
-    .corpo-sobre-img img {
-        max-width: 420px;
+    .hero-tag {
+        justify-content: flex-start;
     }
 
-    .sobre > .hero-text {
-        padding: 22px;
+    .hero-title {
+        font-size: clamp(43px, 4.5vw, 62px);
+    }
+
+    .hero-description {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .hero-actions {
+        justify-content: flex-start;
+        margin-left: 0;
+    }
+
+    .hero-highlights {
+        justify-content: flex-start;
+    }
+
+    .hero-visual {
+        flex: 1;
+        max-width: 530px;
+        min-height: 430px;
+    }
+
+    .visual-decoration-one {
+        width: 300px;
+        height: 300px;
+    }
+
+    .visual-decoration-two {
+        width: 390px;
+        height: 390px;
+    }
+
+    .floating-card-top {
+        right: -5px;
+        top: 35px;
+    }
+
+    .floating-card-bottom {
+        left: -5px;
+        bottom: 35px;
+    }
+
+    .beneficios-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 24px;
+    }
+
+    .beneficio-card {
+        min-height: 230px;
+        padding: 32px 28px;
+    }
+
+    .destaque {
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 70px;
+
+        padding: 110px max(50px, calc((100% - 1100px) / 2));
+    }
+
+    .destaque-content {
+        text-align: left;
+    }
+
+    .destaque-content p {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .destaque-icon {
+        flex-shrink: 0;
+        width: 180px;
+        height: 180px;
+        font-size: 70px;
+    }
+
+    .cadastro {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 80px;
+    }
+
+    .cadastro-info {
+        flex: 1;
+        max-width: 480px;
     }
 
     .login {
-        padding: 42px 35px;
+        flex-shrink: 0;
+        max-width: 420px;
+        padding: 40px 35px;
+    }
+}
+
+
+/* ========================================
+   TELAS GRANDES
+======================================== */
+
+@media (min-width: 1400px) {
+
+    .sobre {
+        padding-left: max(60px, calc((100% - 1250px) / 2));
+        padding-right: max(60px, calc((100% - 1250px) / 2));
+    }
+
+    .beneficios {
+        padding-left: max(60px, calc((100% - 1200px) / 2));
+        padding-right: max(60px, calc((100% - 1200px) / 2));
+    }
+
+    .cadastro {
+        padding-left: max(60px, calc((100% - 1150px) / 2));
+        padding-right: max(60px, calc((100% - 1150px) / 2));
     }
 }
