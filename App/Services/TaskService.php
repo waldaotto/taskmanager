@@ -74,5 +74,9 @@ final class TaskService
         return $this->model->update($id,$data);
     }
 
+    public function get_task_mes(string $ano, string $mes){
+        return $this->model->month_tasks($mes,$ano);
+    }
+
 
 }

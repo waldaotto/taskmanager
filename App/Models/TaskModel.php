@@ -117,4 +117,27 @@ final class TaskModel extends Model
             
             return $stmt->execute($data);
         }
+
+        public function month_tasks(string $mes,string $ano){
+            $id = $_SESSION['user_id_login'];
+            $sql = "SELECT * FROM {$this->table} WHERE data_task BETWEEN :inicio AND :fim AND user_id = :id";
+
+            try{
+                $stmt = $this->cursor->prepare($sql);
+                $stmt->execute([
+                    ':inicio'=>(string) $ano.'/'.$mes.'/01',
+                    ':fim'=>(string) $ano.'/'.$mes.'/31',
+                    ':id'=>$id,
+                    ]);
+            } catch (PDOException $error) {
+                throw new Exception("Erro durante conexão com banco de dados: $error");
+            }
+
+            $result = $stmt->fetchAll();
+            if (!$result){
+                return [];
+            }
+            return $result;
+       
+        }
 }

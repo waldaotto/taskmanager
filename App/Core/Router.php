@@ -16,6 +16,7 @@ final class Router
                 '/auth/cadastro' => fn() =>  self::load('AuthController',"index_cadastro"),
                 '/app' => fn() =>  self::load('DashboardController',"index"),
                 '/tarefas' => fn() =>  self::load('TarefasController',"index"),
+                '/agenda' => fn() =>  self::load('AgendaController',"index"),
                 
             ],
 
