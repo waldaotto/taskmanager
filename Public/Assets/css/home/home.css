@@ -17,6 +17,8 @@
 }
 
 * {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
@@ -26,11 +28,11 @@ html {
 }
 
 body {
-    margin: 0;
-    padding: 0;
+    width: 100%;
+    min-height: 100vh;
     background-color: var(--black);
     color: var(--white);
-    font-family: Arial, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 main {
@@ -40,7 +42,7 @@ main {
 
 section {
     width: 100%;
-    padding: 65px 20px;
+    padding: 45px 18px;
 }
 
 /* ========================================
@@ -51,7 +53,7 @@ section {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 35px;
+    gap: 30px;
     background-color: var(--black);
 }
 
@@ -68,12 +70,13 @@ section {
     font-size: clamp(32px, 8vw, 48px);
     font-weight: 600;
     letter-spacing: -1px;
+    line-height: 1.2;
 }
 
 .hero-subtitle {
     margin-top: 15px;
     color: var(--orange);
-    font-size: 17px;
+    font-size: 16px;
     font-weight: 500;
     line-height: 1.5;
 }
@@ -84,7 +87,7 @@ section {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 25px;
+    gap: 22px;
     width: 100%;
 }
 
@@ -97,7 +100,7 @@ section {
 
 .corpo-sobre-img .hero-text {
     color: var(--white);
-    font-size: 17px;
+    font-size: 16px;
     font-weight: 500;
 }
 
@@ -113,10 +116,12 @@ section {
 
 .sobre > .hero-text {
     display: block;
+    width: 100%;
     max-width: 750px;
-    padding: 20px;
+    padding: 18px;
 
     background-color: var(--black-light);
+    border: 1px solid var(--border);
     border-left: 3px solid var(--orange);
     border-radius: 4px;
 
@@ -137,7 +142,7 @@ section {
 .login {
     width: 100%;
     max-width: 420px;
-    padding: 30px 22px;
+    padding: 28px 20px;
 
     background-color: var(--surface);
     border: 1px solid var(--border);
@@ -186,7 +191,7 @@ section {
 
 .login input[type="submit"] {
     width: 100%;
-    height: 46px;
+    min-height: 46px;
     margin-top: 15px;
 
     background-color: var(--orange);
@@ -219,14 +224,14 @@ section {
 .contato-content {
     width: 100%;
     max-width: 550px;
-    padding: 30px 20px;
+    padding: 20px 10px;
     text-align: center;
 }
 
 .contato-content h2 {
     margin: 0 0 20px;
     color: var(--white);
-    font-size: 26px;
+    font-size: 24px;
     font-weight: 600;
 }
 
@@ -257,6 +262,7 @@ section {
     justify-content: center;
     gap: 10px;
 
+    max-width: 100%;
     padding: 12px 20px;
 
     background-color: var(--orange);
@@ -267,6 +273,7 @@ section {
     font-weight: 600;
     text-decoration: none;
 
+    overflow-wrap: anywhere;
     transition: background-color 0.2s;
 }
 
@@ -300,16 +307,28 @@ input:focus-visible {
 }
 
 /* ========================================
-   RESPONSIVIDADE
+   TABLETS
 ======================================== */
 
 @media (min-width: 768px) {
     section {
-        padding: 80px 35px;
+        padding: 65px 35px;
+    }
+
+    .sobre {
+        gap: 40px;
     }
 
     .corpo-sobre-img {
-        gap: 35px;
+        gap: 30px;
+    }
+
+    .corpo-sobre-img .hero-text {
+        font-size: 17px;
+    }
+
+    .login {
+        padding: 38px 32px;
     }
 
     .contato-content h2 {
@@ -317,7 +336,15 @@ input:focus-visible {
     }
 }
 
+/* ========================================
+   DESKTOPS
+======================================== */
+
 @media (min-width: 1024px) {
+    section {
+        padding: 80px 40px;
+    }
+
     .sobre {
         gap: 45px;
     }
@@ -326,6 +353,7 @@ input:focus-visible {
         flex-direction: row;
         justify-content: center;
         max-width: 950px;
+        gap: 40px;
     }
 
     .corpo-sobre-img .hero-text {
@@ -335,5 +363,13 @@ input:focus-visible {
 
     .corpo-sobre-img img {
         max-width: 420px;
+    }
+
+    .sobre > .hero-text {
+        padding: 22px;
+    }
+
+    .login {
+        padding: 42px 35px;
     }
 }

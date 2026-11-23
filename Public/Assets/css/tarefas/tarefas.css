@@ -1,4 +1,8 @@
 
+/* ========================================
+   CONFIGURAÇÕES GERAIS
+======================================== */
+
 :root {
     --preto: #171715;
     --preto-claro: #22221f;
@@ -30,34 +34,39 @@ html {
 }
 
 body {
+    width: 100%;
     min-height: 100vh;
     background-color: var(--preto);
     color: var(--branco);
     font-family: Arial, Helvetica, sans-serif;
 }
 
-/* CONTEÚDO PRINCIPAL */
+/* ========================================
+   CONTEÚDO PRINCIPAL
+======================================== */
 
 main {
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 35px 20px 50px;
+    padding: 25px 15px 45px;
 }
 
 section {
     width: 100%;
-    margin-bottom: 35px;
+    margin-bottom: 30px;
 }
 
-/* TÍTULO */
+/* ========================================
+   TÍTULO
+======================================== */
 
 .hero-title {
     width: fit-content;
-    margin-bottom: 25px;
+    margin-bottom: 22px;
 
     color: var(--branco);
-    font-size: 1.8rem;
+    font-size: 1.7rem;
     font-weight: 600;
     letter-spacing: -0.5px;
 }
@@ -73,11 +82,13 @@ section {
     background-color: var(--laranja);
 }
 
-/* BUSCA */
+/* ========================================
+   BUSCA
+======================================== */
 
 .search {
     width: 100%;
-    padding: 20px;
+    padding: 16px;
 
     background-color: var(--preto-claro);
     border: 1px solid var(--borda);
@@ -100,6 +111,7 @@ section {
 .search-form input[type="text"] {
     width: 100%;
     min-width: 0;
+    min-height: 44px;
     padding: 12px;
 
     background-color: var(--preto);
@@ -129,6 +141,7 @@ section {
 
 .search-form input[type="submit"] {
     width: 100%;
+    min-height: 44px;
     padding: 12px;
 
     background-color: var(--laranja);
@@ -147,15 +160,19 @@ section {
     background-color: var(--laranja-hover);
 }
 
-/* LISTA DE TAREFAS */
+/* ========================================
+   LISTA DE TAREFAS
+======================================== */
 
 .tasks-group {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 15px;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
 }
 
-/* CARD */
+/* ========================================
+   CARD
+======================================== */
 
 .task {
     display: flex;
@@ -164,7 +181,7 @@ section {
     gap: 12px;
 
     min-width: 0;
-    padding: 20px;
+    padding: 17px;
 
     background-color: var(--branco);
     border: 1px solid #d3cec3;
@@ -199,7 +216,9 @@ section {
     color: #060606;
 }
 
-/* STATUS PENDENTE */
+/* ========================================
+   STATUS PENDENTE
+======================================== */
 
 .task.pendente {
     border-left-color: var(--laranja);
@@ -210,7 +229,9 @@ section {
     color: var(--pendente-texto);
 }
 
-/* STATUS CONCLUÍDA */
+/* ========================================
+   STATUS CONCLUÍDA
+======================================== */
 
 .task.concluida {
     border-left-color: var(--verde);
@@ -221,7 +242,9 @@ section {
     color: var(--verde-texto);
 }
 
-/* ETIQUETA DE STATUS */
+/* ========================================
+   ETIQUETA DE STATUS
+======================================== */
 
 .task-status {
     align-self: flex-start;
@@ -232,7 +255,9 @@ section {
     font-weight: 600;
 }
 
-/* AÇÕES */
+/* ========================================
+   AÇÕES
+======================================== */
 
 .actions {
     display: flex;
@@ -263,7 +288,7 @@ section {
     transition: background-color 0.2s;
 }
 
-/* EDITAR */
+/* Editar */
 
 .actions .edit {
     color: #80603f;
@@ -274,7 +299,7 @@ section {
     background-color: #e4d2bf;
 }
 
-/* EXCLUIR */
+/* Excluir */
 
 .actions .delete {
     color: #925d50;
@@ -285,7 +310,9 @@ section {
     background-color: #ead6d0;
 }
 
-/* MENSAGEM VAZIA */
+/* ========================================
+   MENSAGEM VAZIA
+======================================== */
 
 .message {
     display: flex;
@@ -295,7 +322,7 @@ section {
     gap: 12px;
 
     width: 100%;
-    padding: 35px 20px;
+    padding: 30px 18px;
 
     background-color: var(--preto-claro);
     border: 1px solid var(--borda);
@@ -311,14 +338,9 @@ section {
     color: var(--laranja);
 }
 
-/* ACESSIBILIDADE */
-
-button:focus-visible,
-input:focus-visible,
-select:focus-visible {
-    outline: 2px solid var(--laranja);
-    outline-offset: 2px;
-}
+/* ========================================
+   CABEÇALHO DAS TAREFAS
+======================================== */
 
 .tasks-header {
     display: flex;
@@ -332,37 +354,66 @@ select:focus-visible {
     margin-bottom: 0;
 }
 
+/* ========================================
+   BOTÃO ADICIONAR
+======================================== */
+
 .btn-add {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
+
+    flex-shrink: 0;
     padding: 10px 14px;
+
     border: none;
     border-radius: 4px;
+
     background-color: var(--laranja);
     color: var(--preto);
+
     font-size: 14px;
     font-weight: 600;
     cursor: pointer;
+    transition: background-color 0.2s;
 }
 
 .btn-add:hover {
     background-color: var(--laranja-hover);
 }
 
-@media (max-width: 400px) {
-    .btn-add {
-        padding: 9px 10px;
-        font-size: 12px;
-    }
+/* ========================================
+   ACESSIBILIDADE
+======================================== */
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+    outline: 2px solid var(--laranja);
+    outline-offset: 2px;
 }
 
-/* TABLET */
+/* ========================================
+   TABLETS
+======================================== */
 
 @media (min-width: 600px) {
     main {
-        padding: 45px 30px 60px;
+        padding: 40px 30px 60px;
+    }
+
+    section {
+        margin-bottom: 35px;
+    }
+
+    .hero-title {
+        font-size: 1.9rem;
+        margin-bottom: 25px;
+    }
+
+    .search {
+        padding: 20px;
     }
 
     .search-form {
@@ -379,18 +430,38 @@ select:focus-visible {
 
     .tasks-group {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+    }
+
+    .task {
+        padding: 20px;
+    }
+
+    .message {
+        padding: 35px 25px;
+    }
+
+    .btn-add {
+        padding: 11px 16px;
+        font-size: 14px;
     }
 }
 
-/* DESKTOP */
+/* ========================================
+   DESKTOPS
+======================================== */
 
 @media (min-width: 900px) {
     main {
-        padding: 55px 35px 70px;
+        padding: 50px 35px 70px;
     }
 
     .hero-title {
         font-size: 2rem;
+    }
+
+    .search {
+        padding: 22px;
     }
 
     .tasks-group {
@@ -401,9 +472,39 @@ select:focus-visible {
     .task {
         padding: 22px;
     }
+
+    .tasks-header {
+        margin-bottom: 25px;
+    }
+
+    .btn-add {
+        padding: 12px 18px;
+    }
 }
 
-/* MOVIMENTO REDUZIDO */
+/* ========================================
+   TELAS PEQUENAS
+======================================== */
+
+@media (max-width: 400px) {
+    .tasks-header {
+        gap: 8px;
+    }
+
+    .tasks-header .hero-title {
+        font-size: 1.45rem;
+    }
+
+    .btn-add {
+        gap: 5px;
+        padding: 9px 10px;
+        font-size: 12px;
+    }
+}
+
+/* ========================================
+   MOVIMENTO REDUZIDO
+======================================== */
 
 @media (prefers-reduced-motion: reduce) {
     *,

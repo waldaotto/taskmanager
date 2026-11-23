@@ -1,17 +1,27 @@
 
-/* RESET */
+/* ========================================
+   RESET
+======================================== */
+
 * {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
 body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
+    width: 100%;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-/* HEADER */
+/* ========================================
+   HEADER
+======================================== */
+
 header {
+    position: relative;
+    z-index: 100;
+
     width: 100%;
     min-height: 65px;
     padding: 0 16px;
@@ -20,25 +30,29 @@ header {
     align-items: center;
     justify-content: space-between;
 
-    background-color: #111111;
-    border-bottom: 2px solid #FF7900;
-    margin: 0;
-    border-radius: 0;
+    background-color: #171715;
+    border-bottom: 2px solid #b87943;
 }
 
-/* LINKS E ÍCONES */
+/* ========================================
+   LINKS E ÍCONES
+======================================== */
+
 header a,
 header i {
-    color: #FFFFFF;
+    color: #e8e3d9;
 }
 
-/* LOGOTIPO */
+/* ========================================
+   LOGOTIPO
+======================================== */
+
 .logotipo-box a {
     display: flex;
     align-items: center;
     gap: 8px;
 
-    color: #FFFFFF;
+    color: #e8e3d9;
     text-decoration: none;
 
     font-size: 20px;
@@ -51,9 +65,34 @@ header i {
     object-fit: contain;
 }
 
-/* MENU */
+/* ========================================
+   MENU MOBILE
+======================================== */
+
+.menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+
+    width: 100%;
+    padding: 10px 16px;
+
+    background-color: #171715;
+    border-bottom: 2px solid #b87943;
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+
+    transition:
+        opacity 0.25s ease,
+        transform 0.25s ease,
+        visibility 0.25s ease;
+}
+
 .menu ul {
-    display: none;
+    display: flex;
+    flex-direction: column;
 
     list-style: none;
     margin: 0;
@@ -64,15 +103,18 @@ header i {
     display: block;
     padding: 12px 16px;
 
-    color: #FFFFFF;
+    color: #e8e3d9;
     text-decoration: none;
     font-size: 15px;
 
-    border-radius: 6px;
-    transition: 0.2s ease;
+    border-radius: 4px;
+    transition: background-color 0.2s, color 0.2s;
 }
 
-/* BOTÃO MENU MOBILE */
+/* ========================================
+   BOTÃO MENU MOBILE
+======================================== */
+
 .menu-toggle {
     display: flex;
     align-items: center;
@@ -83,56 +125,137 @@ header i {
 
     background: transparent;
     border: none;
-    border-radius: 6px;
+    border-radius: 4px;
 
-    color: #FF7900;
+    color: #b87943;
     font-size: 24px;
     cursor: pointer;
 }
 
-/* INTERAÇÃO */
+/* ========================================
+   INTERAÇÃO
+======================================== */
+
 .menu-toggle:hover {
-    background-color: #252525;
+    background-color: #292925;
 }
 
 .menu li a:hover {
-    color: #FF7900;
-    background-color: #252525;
+    color: #b87943;
+    background-color: #292925;
 }
 
-/* MENU */
-.menu {
-    position: absolute;
-    top: 65px;
-    left: 0;
+/* ========================================
+   MENU ABERTO
+======================================== */
 
-    width: 100%;
-    padding: 10px 16px;
-
-    background-color: #111111;
-    border-bottom: 2px solid #FF7900;
-
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-10px);
-
-    transition:
-        opacity 0.3s ease,
-        transform 0.3s ease,
-        visibility 0.3s ease;
-}
-
-.menu ul {
-    display: flex;
-    flex-direction: column;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-/* MENU ABERTO */
 .menu.active {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
+}
+
+/* ========================================
+   TABLETS
+======================================== */
+
+@media (min-width: 768px) {
+    header {
+        min-height: 70px;
+        padding: 0 30px;
+    }
+
+    .logotipo-box a {
+        font-size: 21px;
+    }
+
+    .logotipo-box img {
+        width: 35px;
+        height: 35px;
+    }
+
+    .menu {
+        padding: 12px 30px;
+    }
+
+    .menu li a {
+        padding: 14px 18px;
+        font-size: 16px;
+    }
+
+    .menu-toggle {
+        width: 44px;
+        height: 44px;
+    }
+}
+
+/* ========================================
+   DESKTOPS
+======================================== */
+
+@media (min-width: 1024px) {
+    header {
+        min-height: 75px;
+        padding: 0 40px;
+    }
+
+    .logotipo-box a {
+        font-size: 23px;
+    }
+
+    .logotipo-box img {
+        width: 38px;
+        height: 38px;
+    }
+
+    .menu {
+        position: static;
+
+        width: auto;
+        padding: 0;
+
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+
+        background: transparent;
+        border: none;
+        transition: none;
+    }
+
+    .menu ul {
+        flex-direction: row;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .menu li a {
+        padding: 10px 15px;
+        font-size: 15px;
+    }
+
+    .menu-toggle {
+        display: none;
+    }
+}
+
+/* ========================================
+   ACESSIBILIDADE
+======================================== */
+
+.menu-toggle:focus-visible,
+.menu a:focus-visible,
+.logotipo-box a:focus-visible {
+    outline: 2px solid #b87943;
+    outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+    }
 }
