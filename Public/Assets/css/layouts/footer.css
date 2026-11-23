@@ -1,0 +1,28 @@
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+.footer {
+    width: 100%;
+    padding: 20px;
+    margin-top: auto;
+    background-color: var(--black-light);
+    border-top: 1px solid var(--surface);
+    text-align: center;
+}
+
+.footer p {
+    color: var(--gray);
+    font-size: 13px;
+    margin: 0;
+}
+
+.footer p::first-letter {
+    color: var(--orange);
+}

@@ -23,6 +23,8 @@ final class AgendaController extends Controller
 
         $this->view('layouts/header',['title'=>'Agenda']);
         $this->view('agenda/agenda', $this->build_data());
+        $this->view('layouts/footer');
+
     }
 
     private function month_tasks(){

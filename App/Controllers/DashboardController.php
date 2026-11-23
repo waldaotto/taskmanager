@@ -23,6 +23,7 @@ final class DashboardController extends Controller
 
         $this->view('layouts\\header');
         $this->view('home\\dashboard',$data);
+        $this->view('layouts/footer');
     }
 
     private function data_render(): array

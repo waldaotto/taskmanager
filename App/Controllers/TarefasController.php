@@ -27,6 +27,7 @@ final class TarefasController extends Controller
 
         $this->view('layouts\\header',['title'=>'Tarefas']);
         $this->view('tarefas\\tarefas',['tasks'=>$tasks,'autocomplete'=>$autocomplete]);
+        $this->view('layouts/footer');
     }
 
     public function criar_tarefa(): void

@@ -11,5 +11,6 @@ final class HomeController extends Controller
     public function index(): void
     {
         $this->view('home\\home');
+        $this->view('layouts/footer');
     }
 }
