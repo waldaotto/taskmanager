@@ -130,4 +130,14 @@ final class AuthController extends Controller
             self::handler(500,$e->getMessage());
         }
     }
+
+    public function logout(){
+        try{
+            $this->service->logout();
+            $this->redirect("");
+
+        }catch(Exception $e){
+            self::handler(500,$e->getMessage());
+        }
+    }
 }

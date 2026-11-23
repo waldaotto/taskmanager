@@ -17,6 +17,7 @@ final class Router
                 '/app' => fn() =>  self::load('DashboardController',"index"),
                 '/tarefas' => fn() =>  self::load('TarefasController',"index"),
                 '/agenda' => fn() =>  self::load('AgendaController',"index"),
+                '/logout' => fn() =>  self::load('AuthController',"logout"),
                 
             ],
 

@@ -23,6 +23,12 @@
                 <li><a href="/app">Menu</a></li>
                 <li><a href="/tarefas">Tarefas</a></li>
                 <li><a href="/agenda">Agenda</a></li>
+                <form action="/logout" method="GET">
+                    <button type="submit" class="btn-logout">
+                        <span class="logout-icon">↪</span>
+                        Sair
+                    </button>
+                </form>
             </ul>
         </nav>
 
