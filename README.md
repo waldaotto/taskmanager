@@ -1,4 +1,3 @@
-
 # TaskManager
 
 [![PHP](https://img.shields.io/badge/Backend-PHP-777BB4?logo=php&logoColor=white)](https://www.php.net/)
@@ -13,49 +12,62 @@
 [![GitHub](https://img.shields.io/badge/Hosting-GitHub-181717?logo=github&logoColor=white)](https://github.com/)
 [![Status](<https://img.shields.io/badge/Status-Em%20Desenvolvimento-yellow>)]()
 
+![Tela Home](Public/Assets/img/previews/home.png)
+
 ## 📦 Sobre o Projeto
 
 O **TaskManager** é uma aplicação web desenvolvida em PHP, com o objetivo de oferecer um ambiente para gerenciamento e organização de tarefas.
 
-O projeto utiliza uma arquitetura baseada em MVC, com separação adicional da camada de serviços (Services), buscando organizar as responsabilidades da aplicação e facilitar sua manutenção e expansão.
+O projeto utiliza uma arquitetura baseada em **MVC**, com separação adicional da camada de serviços (**Services**), formando uma estrutura MVCS. Essa organização busca separar as responsabilidades da aplicação, facilitar a manutenção e permitir futuras expansões.
 
-A aplicação conta com sistema de autenticação, conexão com banco de dados e estrutura própria de roteamento, controladores e renderização de Views.
+A aplicação conta com sistema de autenticação, gerenciamento de tarefas, agenda, conexão com banco de dados e estrutura própria de roteamento, controladores e renderização de Views.
+
+Também utiliza isolamento de dados por usuário (*User Scoping*), garantindo que cada usuário acesse somente os registros associados à sua própria conta.
 
 ## ⚙️ Funcionalidades
 
-- **Autenticação de usuários:** sistema de login com validação de credenciais.
+- **Autenticação de usuários:** sistema de cadastro, login e logout.
 - **Segurança de senhas:** utilização de funções de hash para armazenamento e verificação de senhas.
+- **Isolamento por usuário:** cada usuário acessa exclusivamente seus próprios registros.
+- **Gerenciamento de tarefas:** estrutura para criação, consulta e manipulação de tarefas.
+- **Agenda:** interface dedicada à organização e visualização de tarefas.
 - **Conexão com banco de dados:** integração com MySQL através de PDO.
 - **Roteamento:** gerenciamento de requisições HTTP GET e POST.
 - **Gerenciamento de Views:** renderização de páginas e transferência de dados entre Controllers e Views.
 - **Tratamento de erros:** gerenciamento centralizado de erros e exceções.
 - **Configuração de ambiente:** utilização de variáveis de ambiente através do arquivo `.env`.
+- **Organização de código:** separação entre Models, Views, Controllers, Services e Core.
 
 ## 🛠️ Tecnologias
 
-| Categoria      | Tecnologia | Finalidade                                 |
-| -------------- | ---------- | ------------------------------------------ |
-| Backend        | PHP        | Linguagem principal da aplicação.        |
-| Frontend       | HTML5      | Estruturação das páginas.               |
-| Frontend       | CSS3       | Estilização das interfaces.              |
-| Frontend       | JavaScript | Interatividade da aplicação.             |
-| Banco de dados | MySQL      | Armazenamento e gerenciamento dos dados.   |
-| Dependências  | Composer   | Gerenciamento de dependências e autoload. |
-| Biblioteca     | PHP dotenv | Gerenciamento de variáveis de ambiente.   |
-| Servidor       | Apache     | Servidor web da aplicação.               |
-| Ambiente       | XAMPP      | Ambiente local de desenvolvimento.         |
-| Versionamento  | Git        | Controle de versão do código-fonte.      |
-| Hospedagem     | GitHub     | Hospedagem do repositório.                |
+| Categoria      | Tecnologia | Finalidade                                       |
+| -------------- | ---------- | ------------------------------------------------ |
+| Backend        | PHP        | Linguagem principal da aplicação.              |
+| Frontend       | HTML5      | Estruturação das páginas.                     |
+| Frontend       | CSS3       | Estilização das interfaces.                    |
+| Frontend       | JavaScript | Interatividade da aplicação.                   |
+| Banco de dados | MySQL      | Armazenamento e gerenciamento dos dados.         |
+| Dependências  | Composer   | Gerenciamento de dependências e autoload PSR-4. |
+| Biblioteca     | PHP dotenv | Gerenciamento de variáveis de ambiente.         |
+| Servidor       | Apache     | Servidor web da aplicação.                     |
+| Ambiente       | XAMPP      | Ambiente local de desenvolvimento.               |
+| Versionamento  | Git        | Controle de versão do código-fonte.            |
+| Hospedagem     | GitHub     | Hospedagem do repositório.                      |
 
 ## 🏗️ Arquitetura
+
+O projeto utiliza uma adaptação da arquitetura MVC para **MVCS**, separando as responsabilidades entre diferentes camadas.
 
 ```text
 taskmanager/
 │
 ├── App/
 │   ├── Controllers/
+│   │   ├── AgendaController.php
+│   │   ├── AuthController.php
+│   │   ├── DashboardController.php
 │   │   ├── HomeController.php
-│   │   └── AuthController.php
+│   │   └── TarefasController.php
 │   │
 │   ├── Core/
 │   │   ├── Connection.php
@@ -67,38 +79,89 @@ taskmanager/
 │   │   └── Router.php
 │   │
 │   ├── Models/
+│   │   ├── TaskModel.php
 │   │   └── UsersModel.php
 │   │
 │   ├── Services/
-│   │   └── AuthService.php
+│   │   ├── AuthService.php
+│   │   └── TaskService.php
 │   │
 │   └── Views/
+│       ├── agenda/
+│       │   └── agenda.php
+│       │
 │       ├── auth/
+│       │   ├── auth.php
+│       │   └── cadastro.php
+│       │
 │       ├── errors/
-│       └── home/
+│       │   ├── 404.php
+│       │   └── 500.php
+│       │
+│       ├── home/
+│       │   ├── dashboard.php
+│       │   └── home.php
+│       │
+│       ├── layouts/
+│       │   └── header.php
+│       │
+│       └── tarefas/
+│           └── tarefas.php
 │
 ├── Public/
+│   ├── .htaccess
 │   ├── index.php
+│   │
 │   └── Assets/
 │       ├── css/
+│       │   ├── agenda/
+│       │   ├── auth/
+│       │   ├── errors/
+│       │   ├── home/
+│       │   ├── layouts/
+│       │   └── tarefas/
+│       │
+│       ├── fafa-icons/
+│       │   ├── css/
+│       │   ├── fonts/
+│       │   ├── less/
+│       │   └── scss/
+│       │
+│       ├── img/
+│       │
 │       └── js/
+│           ├── agenda.js
+│           ├── home.js
+│           ├── menu.js
+│           └── tarefas.js
 │
 ├── vendor/
 │
 ├── .env
 ├── .gitignore
-├── .htaccess
 ├── composer.json
-└── composer.lock
+├── composer.lock
+└── README.md
 ```
 
-O projeto utiliza uma adaptação da arquitetura MVC para **MVCS**, separando as responsabilidades entre:
+### Responsabilidades das camadas
 
-- **Models:** interação com o banco de dados e manipulação dos dados.
-- **Views:** apresentação das interfaces da aplicação.
-- **Controllers:** recebimento das requisições e comunicação entre as camadas.
-- **Services:** implementação das regras de negócio.
-- **Core:** componentes centrais da aplicação, como Router, Controller base, conexão e tratamento de erros.
+- **Controllers:** recebem as requisições HTTP e coordenam a comunicação entre as camadas.
+- **Models:** realizam a interação com o banco de dados e a manipulação dos registros.
+- **Views:** apresentam as interfaces e recebem os dados enviados pelos Controllers.
+- **Services:** concentram as regras de negócio e operações que envolvem a aplicação.
+- **Core:** disponibiliza os componentes centrais, como roteamento, conexão, classes base, auxiliares e tratamento de erros.
+- **Public:** contém o ponto de entrada da aplicação e os recursos públicos, como CSS, JavaScript e imagens.
+
+## 🔐 Segurança e isolamento de dados
+
+O TaskManager utiliza autenticação para identificar os usuários e controlar o acesso às funcionalidades da aplicação.
+
+O isolamento dos registros é realizado através da associação dos dados ao identificador do usuário responsável (*user ownership*).
+
+As consultas e operações devem considerar o usuário autenticado, impedindo que um usuário visualize, altere ou exclua registros pertencentes a outra conta.
+
+As senhas são armazenadas utilizando mecanismos de hash próprios do PHP, e as credenciais de acesso ao banco de dados são mantidas em variáveis de ambiente.
 
 ## 🚀 Instalação
 
@@ -108,6 +171,7 @@ O projeto utiliza uma adaptação da arquitetura MVC para **MVCS**, separando as
 - [Composer](https://getcomposer.org/)
 - [XAMPP](https://www.apachefriends.org/)
 - MySQL
+- Git
 
 ### 1. Clone o repositório
 
@@ -143,13 +207,17 @@ USER=root
 PASSWORD=
 ```
 
+Ajuste os valores conforme a configuração do seu ambiente.
+
+**Importante:** não compartilhe o arquivo `.env` nem envie credenciais reais para o repositório.
+
 ### 5. Configure o banco de dados
 
-Crie um banco de dados MySQL com o nome definido na variável `DB_DATABASE`.
+Crie um banco de dados MySQL com o nome definido na variável `DB`.
 
 Execute os scripts SQL necessários para criar as tabelas da aplicação.
 
-### 6. Configure o servidor Apache
+### 6. Configure o Apache
 
 Coloque o projeto no diretório `htdocs` do XAMPP:
 
@@ -159,25 +227,49 @@ C:\xampp\htdocs\taskmanager
 
 Inicie os serviços Apache e MySQL pelo painel do XAMPP.
 
-<h3>7. Configure Vhosts</h3>
+### 7. Configure o VirtualHost
 
-<h3><wbr>
+Caso utilize um VirtualHost, configure o Apache para apontar o DocumentRoot para a pasta `Public` do projeto.
 
-<h3><wbr>
+Exemplo de configuração:
 
-Na configuração de hosts da sua maquina, configure:
+```apache
+<VirtualHost *:80>
+    ServerName taskmanager
+    DocumentRoot "C:/xampp/htdocs/taskmanager/Public"
 
-```WINDOWS
+    <Directory "C:/xampp/htdocs/taskmanager/Public">
+        AllowOverride All
+        Require all granted
+    </Directory>
+</VirtualHost>
+```
+
+No arquivo `hosts` do Windows, adicione:
+
+```text
 127.0.0.1 taskmanager
 ```
 
-### 8. Acesse a aplicação
+O arquivo normalmente está localizado em:
 
 ```text
-http://localhost/taskmanager
+C:\Windows\System32\drivers\etc\hosts
+```
+
+Certifique-se de que o módulo `mod_rewrite` esteja habilitado e de que o Apache esteja carregando a configuração do VirtualHost.
+
+### 8. Acesse a aplicação
+
+Com o Apache e o MySQL em execução, acesse:
+
+```text
+http://taskmanager
 ```
 
 ## 🗺️ Roadmap
+
+### Estrutura e infraestrutura
 
 - [X] Estrutura inicial da aplicação.
 - [X] Configuração do Composer e autoload PSR-4.
@@ -189,19 +281,49 @@ http://localhost/taskmanager
 - [X] Estrutura de Services.
 - [X] Configuração de variáveis de ambiente.
 - [X] Tratamento centralizado de erros e exceções.
-- [X] Implementação inicial da autenticação.
-- [ ] Gerenciamento de tarefas (CRUD).
+
+### Autenticação e usuários
+
+- [X] Implementação do sistema de autenticação.
+- [X] Cadastro de usuários.
+- [X] Login e logout.
+- [X] Isolamento de dados por usuário.
+- [ ] Confirmação de endereço de e-mail.
+- [ ] Recuperação de senha.
+
+### Gerenciamento de tarefas
+
+- [X] Estrutura inicial de gerenciamento de tarefas.
+- [X] Interface de tarefas.
+- [X] CRUD completo de tarefas.
 - [ ] Gerenciamento de categorias.
-- [ ] Painel de gerenciamento de tarefas.
-- [ ] Painel de calendario;
-- [ ] Gerenciamento de tarefas por calendario(CRUD));
+- [ ] Filtros e pesquisa de tarefas.
+- [ ] Priorização de tarefas.
+
+### Interface e organização
+
+- [X] Página inicial.
+- [X] Dashboard.
+- [X] Interface da agenda.
+- [X] Layout compartilhado e navegação.
+- [X] Painel completo de gerenciamento de tarefas.
+- [ ] Calendário interativo.
+- [ ] Gerenciamento de tarefas por calendário.
 
 ## 📌 Status
 
 **Em desenvolvimento.**
 
-O projeto está em desenvolvimento, com sua estrutura principal implementada e o sistema de autenticação em construção. Novas funcionalidades serão adicionadas progressivamente.
+O projeto possui sua estrutura principal implementada, incluindo arquitetura MVCS, autenticação, conexão com banco de dados, sistema de roteamento e interfaces para gerenciamento de tarefas e agenda.
+
+O desenvolvimento continua com foco na implementação das funcionalidades de gerenciamento, aprimoramento da segurança e expansão dos recursos da aplicação.
 
 ## 📄 Licença
 
 Licença ainda não definida.
+
+## Previews
+
+![Calendario](Public/Assets/img/previews/calendario.png)
+![Dashboard](Public/Assets/img/previews/dashboard.png)
+![tarefas](Public/Assets/img/previews/tarefas.png)
