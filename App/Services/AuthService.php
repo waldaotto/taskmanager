@@ -22,8 +22,13 @@ final class AuthService
             throw new InvalidArgumentException("E-mail e senha não pode estar vazios!");
         }
 
+        if (!$this->email_valido($email)){
+            throw new InvalidArgumentException(("E-mail invalido!"));
+        }
+
         
         $user = $this->model->find_by_field('email',$email);
+
 
         if (empty($user)){
             throw new InvalidArgumentException("E-mail não cadastrado!");
@@ -38,6 +43,18 @@ final class AuthService
         return true;
     
         
+    }
+
+    private function email_valido(string $email){
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)){
+            return false;
+        }
+
+        if (!checkdnsrr(substr(strrchr($email, '@'), 1), 'MX')){
+            return false;
+        }
+
+        return true;
     }
 
     /**Efetua o login na sesssion */
