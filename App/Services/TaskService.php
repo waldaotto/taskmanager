@@ -75,7 +75,18 @@ final class TaskService
     }
 
     public function get_task_mes(string $ano, string $mes){
-        return $this->model->month_tasks($mes,$ano);
+        $mtasks = $this->model->month_tasks($mes,$ano);
+
+        $day_task = [];
+
+        foreach ($mtasks as $task)
+            {
+                $dia = date('d', strtotime($task['data_task']));
+
+                $day_task[$dia][] = $task;
+            }
+
+        return $day_task;
     }
 
 

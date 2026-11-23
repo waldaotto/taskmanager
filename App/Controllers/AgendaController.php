@@ -3,6 +3,7 @@ namespace App\Controllers;
 use App\Core\Controller;
 use App\Core\ErrorHandler;
 use App\Services\TaskService;
+use Exception;
 
 final class AgendaController extends Controller 
 {
@@ -24,8 +25,15 @@ final class AgendaController extends Controller
         $this->view('agenda/agenda', $this->build_data());
     }
 
-    private function days_tasks(){
+    private function month_tasks(){
         ['mes' => $mes, 'ano' => $ano] = $this->lerMesAno($_GET);
+
+        try{
+            return $this->service->get_task_mes((string)$ano,(string)$mes);
+        }catch(Exception $e){
+            self::handler(500,$e->getMessage());
+        }
+        
     }
 
     private function build_data():array{
@@ -40,13 +48,15 @@ final class AgendaController extends Controller
         $links         = $this->linksNavegacao($mes, $ano);
         $linkAnterior  = $links['anterior'];
         $linkProximo   = $links['proximo'];
+        $tasksDoMes = $this->month_tasks();
 
         return [
             'linkAnterior' => $linkAnterior,
             'linkProximo' => $linkProximo,
             'tituloMes' => $tituloMes,
             'diasSemana' => $diasSemana,
-            'semanas' => $semanas
+            'semanas' => $semanas,
+            'tasksDoMes'=>$tasksDoMes
         ];
     }
 
