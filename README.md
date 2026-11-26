@@ -38,6 +38,30 @@ Também utiliza isolamento de dados por usuário (*User Scoping*), garantindo qu
 - **Configuração de ambiente:** utilização de variáveis de ambiente através do arquivo `.env`.
 - **Organização de código:** separação entre Models, Views, Controllers, Services e Core.
 
+## Requisitos
+
+**Funcionais**
+- RF01: O sistema deve permitir o cadastro de usuários com e-mail e senha.
+- RF02: O sistema deve validar o formato do e-mail no cadastro.
+- RF03: O sistema deve permitir login e logout de usuários.
+- RF04: O sistema deve permitir criar, consultar, editar e excluir tarefas (CRUD).
+- RF05: O sistema deve exibir cada usuário somente com as suas próprias tarefas.
+- RF06: O sistema deve exibir uma agenda com os dias que possuem tarefas.
+- RF07: O sistema deve exibir um painel com as tarefas do dia.
+- RF08: O sistema deve exibir mensagens de erro compreensíveis ao usuário em caso de falha.
+
+**Não funcionais**
+
+- RNF01 (Segurança): As senhas devem ser armazenadas e verificadas com funções de hash nativas do PHP, nunca em texto puro.
+- RNF02 (Segurança): Todas as consultas e operações devem considerar o usuário autenticado, impedindo o acesso a registros de outras contas.
+- RNF03 (Arquitetura): O código deve seguir o padrão MVC, com separação em Models, Views, Controllers, Services e Core.
+- RNF04 (Persistência): Os dados devem ser armazenados em MySQL, com acesso via PDO.
+- RNF05 (Configuração): Credenciais e configurações de ambiente devem ficar em variáveis de ambiente (arquivo .env), fora do código.
+- RNF06 (Confiabilidade): Erros e exceções devem ser tratados de forma centralizada.
+- RNF07 (Usabilidade): A interface deve ser responsiva e adaptada a dispositivos móveis.
+- RNF08 (Manutenibilidade): O projeto e o código devem ser documentados para facilitar atualizações futuras.
+- RNF09 (Portabilidade): O sistema deve rodar em ambiente PHP com Apache e MySQL, com dependências gerenciadas pelo Composer.
+
 ## 🛠️ Tecnologias
 
 | Categoria      | Tecnologia | Finalidade                                       |
